@@ -7,6 +7,7 @@ img {
     padding-bottom:7px; 
     margin-top:22px; 
     margin-bottom:22px;
+    background: #fff !important;
 }
 
 .navbar {
@@ -87,4 +88,9 @@ img {
 
 .MathJax_ref {
   fill: #00bc8c!important;
+}
+
+.profile-photo {
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.10), 0 1.5px 6px 0 rgba(0,0,0,0.08);
+  border-radius: 5%;
 }

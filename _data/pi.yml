@@ -6,9 +6,9 @@
   # fit: cover (options: cover, contain, fill, none, scale-down)
   # width: 80 (percentage of container width)
   position_x: 50
-  position_y: 50
+  position_y: 70
   fit: cover
-  width: 60
+  width: 80
   info: Junior undergraduate (B.Tech) majoring in Artificial Intelligence & Data Science.<br>
        <i>Driven by curiosity, innovation, and a passion for building intelligent systems.</i>
   email: richard@university.edu

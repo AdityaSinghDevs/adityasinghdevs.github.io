@@ -93,12 +93,6 @@ img {
 .profile-photo {
   box-shadow: 0 4px 16px 0 rgba(0,0,0,0.10), 0 1.5px 6px 0 rgba(0,0,0,0.08);
   border-radius: 50%; /* Circular shape */
-  object-fit: var(--profile-fit, cover); /* How image fits: cover, contain, fill, none, scale-down */
-  object-position: var(--profile-position-x, 50%) var(--profile-position-y, 50%); /* What part of image is visible (x% y%) */
   aspect-ratio: 1 / 1; /* Keep it square for perfect circle */
-  width: var(--profile-width, 80%) !important; /* Size of the photo */
-  max-width: 250px !important; /* Maximum size to prevent it from getting too large */
   height: auto;
-  display: block;
-  margin: 0 auto;
 }

@@ -2,7 +2,7 @@
 {% for member in site.data.pi %}
 <div class="jumbotron">
    <center>
-   <a href="{{site.url}}{{site.baseurl}}/about"><img class="profile-photo" src="{{ '/images/' | append: member.photo | relative_url }}" style="block:inline; margin-left:auto; margin-right:auto; margin-bottom:5px; --profile-position-x: {{ member.position_x | default: 50 }}%; --profile-position-y: {{ member.position_y | default: 50 }}%; --profile-fit: {{ member.fit | default: 'cover' }}; --profile-width: {{ member.width | default: 80 }}%;"/></a>
+   <a href="{{site.url}}{{site.baseurl}}/about"><img class="profile-photo" src="{{ '/images/' | append: member.photo | relative_url }}" style="width: {{ member.width | default: 60 }}%; max-width: 250px; object-fit: {{ member.fit | default: 'cover' }}; object-position: {{ member.position_x | default: 50 }}% {{ member.position_y | default: 50 }}%; display: block; margin: 0 auto 5px auto;"/></a>
    <h4>{{ member.name }}</h4>
    </center>
 </div>

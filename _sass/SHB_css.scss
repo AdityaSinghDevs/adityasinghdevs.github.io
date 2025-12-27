@@ -97,3 +97,19 @@ img {
   height: auto;
   margin-bottom: 15px !important;
 }
+
+.social-icons {
+  a {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: inline-block;
+    
+    &:hover {
+      transform: scale(1.15);
+      opacity: 0.8;
+    }
+    
+    i {
+      vertical-align: middle;
+    }
+  }
+}

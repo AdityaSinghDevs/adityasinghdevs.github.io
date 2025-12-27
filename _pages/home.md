@@ -54,14 +54,22 @@ Feynman R., The theory of positrons. <i>Phys. Rev.</i> (1949)
 </div> -->
 <br/>
 
-<!-- ### About me -->
-<h2 style="font-family: 'Geist', sans-serif; font-weight: 600; font-size: 2.5em; color: #222;">About me.</h2>
+<!-- ### About me
+<h2 style="font-family: 'Geist', sans-serif; font-weight: 600; font-size: 2.5em; color: #222;">About me.</h2> -->
 
 
-I am a junior undergraduate in Computer Science Engineering, specializing in AI & Data Science at GGSIPU (VIPS-TC).
-A student nerding out on everything architectures, training workflows, and papers people have written in this field, especially the kind that make you pause and wonder, <b>"How did they even build this?"</b>
-<p>Lately, I've been learning how to work with large language models, how do they work, how concepts like LoRa and Quantised-LoRa work at their mathematical cores, how to fine-tune these LLM's the right way, understand the guts of how they are formed, and how to apply them the right way. Alongside that, I’ve been going deeper into core concepts and reading about all the wild new ideas coming out in the space.
-<br>Well at times it feels like a lot. But thats the point.<br></p>
+## About Me
+
+I am an undergraduate majoring in Artificial Intelligence and Data Science, with a strong interest in **applied machine learning systems and research-oriented LLM engineering**.
+
+My current focus lies in understanding how large language models behave under practical constraints — particularly how **parameter-efficient fine-tuning and compression techniques** (such as LoRA, quantization, and pruning) influence **internal representations, attention dynamics, and downstream behavior** of transformer-based models. I am exploring these questions through controlled experiments and analysis, with the goal of developing a deeper systems-level understanding rather than producing surface-level benchmarks.
+
+Alongside this, I am developing **MÍMIR**, a research-grade LLM system aimed at structured reasoning for incident diagnosis and DevOps/SRE workflows. The project is designed as a rigorous experimental artifact, combining retrieval-augmented generation with parameter-efficient fine-tuning and emphasizing **reproducibility, ablation-driven evaluation, and clear system boundaries**. MÍMIR serves both as an applied system and as a platform for studying trade-offs between base models, adapted models, and retrieval-enhanced pipelines.
+
+In parallel with research-oriented work, I build **production-grade AI systems**, including scalable inference services, modular ML pipelines, and deployment-ready backends. I have contributed to open-source optimization efforts within **Intel’s OpenVINO ecosystem** and have led applied projects spanning computer vision, generative models, and LLM-based systems.
+
+My long-term goal is to work as a **research engineer**, bridging the gap between modern ML research and reliable, high-impact real-world systems.
+<br></p>
 <h5 style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 1.5em; color: #222;">
   Machines Converge.<br>But Humans?<br>They transcend.
 </h5>

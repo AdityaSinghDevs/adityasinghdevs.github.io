@@ -113,3 +113,18 @@ img {
     }
   }
 }
+
+.sidebar-card {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 20px 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  max-width: 260px;
+  margin: 0 auto 30px auto;
+}
+@media (max-width: 768px) {
+  .sidebar-card {
+    max-width: 100%;
+  }
+}

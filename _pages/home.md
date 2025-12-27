@@ -134,3 +134,27 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
   <a href="{{ site.url }}{{ site.baseurl }}/projects/" style="text-decoration: none; color: #000; font-family: 'Geist', sans-serif; font-weight: 500; font-size: 1.1rem;">See all</a>
   <div style="width: 60px; height: 1px; background-color: #000; margin: 8px auto;"></div>
 </div>
+
+<div style="width: 100%; height: 1px; background-color: #e0e0e0; margin: 40px 0;"></div>
+
+## Ongoing Work
+
+<div class="jumbotron project-card" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: background-color 0.4s ease;">
+<div class="row">
+<div class="col-md-12">
+<h5 style="font-weight: bold; margin-bottom: 8px; color: #222;"><span style="color: #007bff; font-size: 1.2rem; margin-right: 8px;">●</span>LLM Compression & Interpretability</h5>
+<p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">Manuscript in preparation</p>
+<p style="font-size: 0.85rem; line-height: 1.6; color: #444;">Studying how parameter-efficient fine-tuning and compression techniques (LoRA, quantization, pruning) alter internal representations and attention dynamics in transformer models.</p>
+</div>
+</div>
+</div>
+
+<div class="jumbotron project-card" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: background-color 0.4s ease;">
+<div class="row">
+<div class="col-md-12">
+<h5 style="font-weight: bold; margin-bottom: 8px; color: #222;"><span style="color: #6f42c1; font-size: 1.2rem; margin-right: 8px;">●</span>MÍMIR — Cognitive Diagnostic LLM System</h5>
+<p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">Active development</p>
+<p style="font-size: 0.85rem; line-height: 1.6; color: #444;">A research-oriented, production-grade LLM system for DevOps and SRE incident reasoning, emphasizing retrieval grounding, structured reasoning, and reproducible evaluation.</p>
+</div>
+</div>
+</div>

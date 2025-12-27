@@ -78,17 +78,17 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 
 ## Selected Projects
 
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron" style="margin-top: 20px; margin-bottom: 20px; padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-3 col-sm-12" style="margin-bottom: 15px;">
-<div style="width: 100%; height: 150px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
+<div class="col-md-2 col-sm-12" style="margin-bottom: 10px;">
+<div style="width: 100%; height: 100px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
 [Project Image]
 </div>
 </div>
-<div class="col-md-9 col-sm-12">
-<h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">Tesseract v1 — Text-to-3D Mesh Generation Engine</h5>
-<p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">August 2025</p>
-<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.6;">
+<div class="col-md-10 col-sm-12">
+<h5 style="font-weight: bold; margin-bottom: 6px; color: #222;">Tesseract v1 — Text-to-3D Mesh Generation Engine</h5>
+<p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 8px;">August 2025</p>
+<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.4;">
 <li>Designed a diffusion-based system for generating 3D meshes from text prompts, with a reproducible, production-grade inference pipeline.</li>
 <li>Emphasized system design: stateless execution, device-aware fallback, modular architecture, and config-driven experimentation.</li>
 </ul>
@@ -96,17 +96,17 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 </div>
 </div>
 
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron" style="margin-top: 20px; margin-bottom: 20px; padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-3 col-sm-12" style="margin-bottom: 15px;">
-<div style="width: 100%; height: 150px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
+<div class="col-md-2 col-sm-12" style="margin-bottom: 10px;">
+<div style="width: 100%; height: 100px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
 [Project Image]
 </div>
 </div>
-<div class="col-md-9 col-sm-12">
-<h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">Reddit-Persona — LLM-based User Persona Generation</h5>
-<p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">July 2025</p>
-<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.6;">
+<div class="col-md-10 col-sm-12">
+<h5 style="font-weight: bold; margin-bottom: 6px; color: #222;">Reddit-Persona — LLM-based User Persona Generation</h5>
+<p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 8px;">July 2025</p>
+<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.4;">
 <li>Built a production-grade LLM system to analyze Reddit user activity and generate structured, UX-focused personas.</li>
 <li>Implemented chunked inference, modular configuration, and dual interfaces (CLI + Streamlit) to balance scalability, cost, and usability.</li>
 </ul>
@@ -114,17 +114,17 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 </div>
 </div>
 
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron" style="margin-top: 20px; margin-bottom: 20px; padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-3 col-sm-12" style="margin-bottom: 15px;">
-<div style="width: 100%; height: 150px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
+<div class="col-md-2 col-sm-12" style="margin-bottom: 10px;">
+<div style="width: 100%; height: 100px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
 [Project Image]
 </div>
 </div>
-<div class="col-md-9 col-sm-12">
-<h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">MÍMIR — Research-Oriented LLM System (Early Stage)</h5>
-<p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;"> Present </p>
-<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.6;">
+<div class="col-md-10 col-sm-12">
+<h5 style="font-weight: bold; margin-bottom: 6px; color: #222;">MÍMIR — Research-Oriented LLM System (Early Stage)</h5>
+<p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 8px;"> Present </p>
+<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.4;">
 <li>Designing a research-oriented LLM system to study retrieval-augmented reasoning and parameter-efficient adaptation under realistic operational and system constraints.</li>
 <li>Focused on reproducibility, ablation-driven evaluation, observability, and system-level trade-offs relevant to incident analysis and long-running ML services, rather than application-level demos.</li>
 </ul>

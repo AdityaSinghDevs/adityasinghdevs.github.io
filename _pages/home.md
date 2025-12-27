@@ -88,7 +88,7 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 <div class="col-md-9 col-sm-12">
 <h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">Tesseract v1 — Text-to-3D Mesh Generation Engine</h5>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">August,2025</p>
-<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.6;">
+<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.6rem; line-height: 1.6;">
 <li>Built a diffusion-based system for text-to-3D mesh generation with a reproducible, production-oriented inference pipeline.</li>
 <li>Focused on system design: stateless execution, device-aware fallback, modular components, and config-driven experimentation.</li>
 </ul>
@@ -106,7 +106,7 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 <div class="col-md-9 col-sm-12">
 <h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">Reddit-Persona — LLM-based User Persona Generation</h5>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">July,2025</p>
-<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.6;">
+<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.6rem; line-height: 1.6;">
 <li>Developed a production-grade LLM system to analyze Reddit user activity and generate structured, UX-oriented personas.</li>
 <li>Implemented chunked inference, modular configuration, and dual interfaces (CLI and Streamlit) to balance cost, scalability, and usability.</li>
 </ul>
@@ -124,7 +124,7 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 <div class="col-md-9 col-sm-12">
 <h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">MÍMIR — Research-Oriented LLM System (Early Stage)</h5>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">2025 – Present</p>
-<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; line-height: 1.6;">
+<ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.6rem; line-height: 1.6;">
 <li>Designing a research-oriented LLM system to study retrieval-augmented reasoning and parameter-efficient adaptation under realistic system constraints.</li>
 <li>Emphasizes reproducible evaluation and system-level trade-offs relevant to long-running ML services, rather than application-level demos.</li>
 </ul>

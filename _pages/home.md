@@ -80,10 +80,10 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 
 <div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-2 col-sm-12" style="margin-bottom: 15px;">
+<div class="col-md-1 col-sm-12" style="margin-bottom: 15px;">
 <img src="{{ '/images/tesseract.gif' | relative_url }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px;" alt="Tesseract Project">
 </div>
-<div class="col-md-10 col-sm-12">
+<div class="col-md-11 col-sm-12">
 <h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">Tesseract v1 — Text-to-3D Mesh Generation Engine</h5>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">August,2025</p>
 <ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.75rem; line-height: 1.6;">
@@ -96,12 +96,12 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 
 <div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-2 col-sm-12" style="margin-bottom: 15px;">
+<div class="col-md-1 col-sm-12" style="margin-bottom: 15px;">
 <div style="width: 100%; height: 150px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
 [Project Image]
 </div>
 </div>
-<div class="col-md-10 col-sm-12">
+<div class="col-md-11 col-sm-12">
 <h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">Reddit-Persona — LLM-based User Persona Generation</h5>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">July,2025</p>
 <ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.75rem; line-height: 1.6;">
@@ -114,12 +114,12 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 
 <div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-2 col-sm-12" style="margin-bottom: 15px;">
+<div class="col-md-1 col-sm-12" style="margin-bottom: 15px;">
 <div style="width: 100%; height: 150px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
 [Project Image]
 </div>
 </div>
-<div class="col-md-10 col-sm-12">
+<div class="col-md-11 col-sm-12">
 <h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">MÍMIR — Research-Oriented LLM System (Early Stage)</h5>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 12px;">2025 – Present</p>
 <ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.75rem; line-height: 1.6;">

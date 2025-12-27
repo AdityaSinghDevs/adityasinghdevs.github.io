@@ -58,10 +58,10 @@ Feynman R., The theory of positrons. <i>Phys. Rev.</i> (1949)
 
 
 I am a junior undergraduate in Computer Science Engineering, specializing in AI & Data Science at GGSIPU (VIPS-TC).
-A student nerding out on everything architectures, training workflows, and papers people have written in this field — especially the kind that make you pause and wonder, <b>"How did they even build this?"<b>
-<p>Lately, I've been learning how to work with large language models, how do they work, how cocepts like LoRa and Quantised-LoRa work at their mathematical cores, how to fine-tune these LLM's the right way, understand the guts of how they fare formed, and how to apply them the right way. Alongside that, I’ve been going deeper into core concepts and reading about all the wild new ideas coming out in the space.
+A student nerding out on everything architectures, training workflows, and papers people have written in this field, especially the kind that make you pause and wonder, <b>"How did they even build this?"</b>
+<p>Lately, I've been learning how to work with large language models, how do they work, how concepts like LoRa and Quantised-LoRa work at their mathematical cores, how to fine-tune these LLM's the right way, understand the guts of how they are formed, and how to apply them the right way. Alongside that, I’ve been going deeper into core concepts and reading about all the wild new ideas coming out in the space.
 <br>Well at times it feels like a lot. But thats the point.<br></p>
 <h5 style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 1.5em; color: #222;">
   Machines Converge.<br>But Humans?<br>They transcend.
 </h5>
-<p style="font-size: 0.9em; font-style: italic; color: #444; margin-top: -10px; margin-left : 120px;"> – Aditya</p><br>
+<p style="font-size: 0.9em; font-style: italic; color: #444; margin-top: -10px; margin-left : 160px;"> – Aditya</p><br>

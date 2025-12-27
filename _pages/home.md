@@ -76,6 +76,10 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 </h5>
 <p style="font-size: 0.9em; font-style: italic; color: #444; margin-top: -10px; margin-left : 160px;"> – Aditya</p><br>
 
+<div style="width: 100%; height: 1px; background-color: #e0e0e0; margin: 40px 0;"></div>
+
+<p style="font-size: 0.85rem; font-style: italic; color: #6c757d; margin-bottom: 20px;">Below are selected systems and research-oriented projects that reflect my current technical focus.</p>
+
 ## Selected Projects
 
 <div class="jumbotron project-card" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: background-color 0.4s ease;">

@@ -97,9 +97,7 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 <div class="jumbotron project-card" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: background-color 0.4s ease;">
 <div class="row">
 <div class="col-md-3 col-sm-12" style="margin-bottom: 15px;">
-<div style="width: 100%; height: 150px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
-[Project Image]
-</div>
+<img src="{{ '/images/reddit.png' | relative_url }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px;" alt="Reddit-Persona Project">
 </div>
 <div class="col-md-9 col-sm-12">
 <h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">Reddit-Persona — LLM-based User Persona Generation</h5>
@@ -115,9 +113,7 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 <div class="jumbotron project-card" style="margin-top: 30px; margin-bottom: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: background-color 0.4s ease;">
 <div class="row">
 <div class="col-md-3 col-sm-12" style="margin-bottom: 15px;">
-<div style="width: 100%; height: 150px; background-color: #e9ecef; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem;">
-[Project Image]
-</div>
+<img src="{{ '/images/mimir.png' | relative_url }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px;" alt="MÍMIR Project">
 </div>
 <div class="col-md-9 col-sm-12">
 <h5 style="font-weight: bold; margin-bottom: 8px; color: #222;">MÍMIR — Research-Oriented LLM System (Early Stage)</h5>

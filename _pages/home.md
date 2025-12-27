@@ -75,3 +75,40 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
   Machines Converge.<br>But Humans?<br>They transcend.
 </h5>
 <p style="font-size: 0.9em; font-style: italic; color: #444; margin-top: -10px; margin-left : 160px;"> – Aditya</p><br>
+
+## Projects
+
+<div class="row" style="margin-top: 20px;">
+  <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+    <div class="jumbotron" style="padding: 20px; height: 100%; margin-bottom: 0;">
+      <h5 style="font-weight: bold; margin-bottom: 10px;">Project Name 1</h5>
+      <p style="color: #6c757d; font-size: 0.85rem; margin-bottom: 12px;">January 2024</p>
+      <ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.9rem;">
+        <li>First key point about the project and its main feature or achievement</li>
+        <li>Second key point describing another important aspect or outcome</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+    <div class="jumbotron" style="padding: 20px; height: 100%; margin-bottom: 0;">
+      <h5 style="font-weight: bold; margin-bottom: 10px;">Project Name 2</h5>
+      <p style="color: #6c757d; font-size: 0.85rem; margin-bottom: 12px;">March 2024</p>
+      <ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.9rem;">
+        <li>First key point about the project and its main feature or achievement</li>
+        <li>Second key point describing another important aspect or outcome</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+    <div class="jumbotron" style="padding: 20px; height: 100%; margin-bottom: 0;">
+      <h5 style="font-weight: bold; margin-bottom: 10px;">Project Name 3</h5>
+      <p style="color: #6c757d; font-size: 0.85rem; margin-bottom: 12px;">June 2024</p>
+      <ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.9rem;">
+        <li>First key point about the project and its main feature or achievement</li>
+        <li>Second key point describing another important aspect or outcome</li>
+      </ul>
+    </div>
+  </div>
+</div>

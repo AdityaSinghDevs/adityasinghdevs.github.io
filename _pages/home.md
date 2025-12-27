@@ -14,20 +14,49 @@ permalink: /
 
 
 
-
 <!-- Theoretical physics is a branch of physics that focuses on the development of mathematical models and theories to understand and explain natural phenomena.
 It plays a crucial role in our understanding of the fundamental laws of the universe and the fundamental particles that make up all matter.
 Research in theoretical physics helps us to make predictions about how the universe works and to test these predictions through experiments.
 It also helps us to understand the fundamental principles that govern the behavior of matter and energy, and to explore the limits of our current knowledge.
 Theoretical physics helps us to make progress in a wide range of fields, including cosmology, particle physics, and quantum mechanics, and it has led to many important discoveries and technological innovations. -->
 
-## Hi, I’m Aditya.
+<div class="row">
+<div class="col-md-7 col-sm-12">
+## Hi, I'm Aditya.
 
 I am an AI engineer and research-oriented undergraduate focused on **computer vision, diffusion models, and large language model systems**, with an emphasis on **reproducible experimentation, production-grade AI pipelines**.
 
 My work spans applied computer vision, LLM-based systems, and open-source contributions, including work on **Intel OpenVINO**. I am particularly interested in the intersection of **model architecture, training workflows, and system-level design**, and how these choices affect real-world deployment and research validity.
 
 This website serves as a record of my **projects, research directions, technical writing, and academic progress**.
+
+</div>
+<div class="col-md-5 col-sm-12">
+{% for member in site.data.pi %}
+<div class="jumbotron">
+   <center>
+   <a href="{{site.url}}{{site.baseurl}}/about"><img class="profile-photo" src="{{ '/images/' | append: member.photo | relative_url }}" style="width: {{ member.width | default: 60 }}%; max-width: 250px; object-fit: {{ member.fit | default: 'cover' }}; object-position: {{ member.position_x | default: 50 }}% {{ member.position_y | default: 50 }}%; display: block; margin: 0 auto;"/></a>
+   <h4 style="font-weight: bold; margin-top: 15px;">{{ member.name }}</h4>
+   <div style="width: 60px; height: 1px; background-color: #000; margin: 12px auto;"></div>
+   <div class="social-icons" style="margin-top: 12px; display: flex; justify-content: center; align-items: center; gap: 15px;">
+     {% if member.linkedin %}<a href="{{ member.linkedin }}" target="_blank" aria-label="LinkedIn" style="color: #000000; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;"><i class="fa fa-linkedin fa-2x"></i></a>{% endif %}
+     {% if member.x %}<a href="{{ member.x }}" target="_blank" aria-label="X" style="color: #000000; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>{% endif %}
+     {% if member.github %}<a href="{{ member.github }}" target="_blank" aria-label="GitHub" style="color: #333333; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;"><i class="fa fa-github fa-2x"></i></a>{% endif %}
+   </div>
+   <div style="margin-top: 20px; padding: 0 10px; text-align: center;">
+     <p style="color: #6c757d; font-size: 0.6rem; line-height: 2.0; margin: 1;">
+       <strong style="color: #495057; font-size: 0.8rem;">Current focus</strong><br>
+       NLP & LLM systems (RAG, reasoning, system design)<br>
+       Model architectures, compression, and efficiency<br>
+       Industrial-grade ML/DL practices and reproducible<br>
+       experimentation
+     </p>
+   </div>
+   </center>
+</div>
+{% endfor %}
+</div>
+</div>
 
 
 <!-- <p>

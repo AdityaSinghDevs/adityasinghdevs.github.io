@@ -28,17 +28,6 @@ Write-Host "Update #: $counter" -ForegroundColor Yellow
 Write-Host "Commit message: $commitMessage" -ForegroundColor Yellow
 Write-Host ""
 
-# 60-second countdown with progress bar
-Write-Host "Starting 60-second countdown..." -ForegroundColor Magenta
-for ($i = 60; $i -gt 0; $i--) {
-    $percentComplete = ((60 - $i + 1) / 60) * 100
-    $progressBar = "[" + ("█" * [math]::Floor($percentComplete / 5)) + ("░" * (20 - [math]::Floor($percentComplete / 5))) + "]"
-    Write-Host -NoNewline "`rProgress: $progressBar $percentComplete% ($i seconds remaining)"
-    Start-Sleep -Seconds 1
-}
-Write-Host "`rProgress: [████████████████████] 100% (0 seconds remaining) - Complete!" -ForegroundColor Green
-Write-Host ""
-
 # Stage all changes
 Write-Host "Staging all changes..." -ForegroundColor Green
 git add .
@@ -70,3 +59,14 @@ Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "Success! All changes pushed." -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Cyan
+
+# 60-second countdown with progress bar
+Write-Host "Starting 60-second countdown..." -ForegroundColor Magenta
+for ($i = 60; $i -gt 0; $i--) {
+    $percentComplete = ((60 - $i + 1) / 60) * 100
+    $progressBar = "[" + ("█" * [math]::Floor($percentComplete / 5)) + ("░" * (20 - [math]::Floor($percentComplete / 5))) + "]"
+    Write-Host -NoNewline "`rProgress: $progressBar $percentComplete% ($i seconds remaining)"
+    Start-Sleep -Seconds 1
+}
+Write-Host "`rProgress: [████████████████████] 100% (0 seconds remaining) - Complete!" -ForegroundColor Green
+Write-Host ""

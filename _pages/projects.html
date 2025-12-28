@@ -26,6 +26,45 @@ permalink: /projects/
 </div>
 
 <style>
+/* CRITICAL: Override global container-fluid width from SHB_css.scss */
+.projects-page .container-fluid,
+.projects-page > .container-fluid,
+div.projects-page .container-fluid,
+body .projects-page .container-fluid {
+  max-width: 2500px !important;
+  width: 100% !important;
+}
+
+/* Override global container width */
+.projects-page .container,
+div.projects-page .container,
+body .projects-page .container {
+  max-width: 2500px !important;
+  width: 100% !important;
+}
+
+/* Override Bootstrap's default container-fluid */
+.projects-page .container-fluid,
+.projects-page > .container-fluid {
+  max-width: 2500px !important;
+  width: 100% !important;
+}
+
+/* Force row and column widths */
+.projects-page .row,
+.projects-page > .row,
+div.projects-page .row {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.projects-page .col-md-12,
+.projects-page > .col-md-12,
+div.projects-page .col-md-12 {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
 .filter-btn:hover {
   background-color: #f8f9fa !important;
 }
@@ -104,33 +143,6 @@ permalink: /projects/
   width: 200% !important;
   margin-left: auto !important;
   margin-right: auto !important;
-}
-/* Expand the overall page container width - MUST override SHB_css.scss */
-.projects-page .container-fluid {
-  max-width: 2500px !important;
-  width: 100% !important;
-}
-.projects-page .container {
-  max-width: 2500px !important;
-  width: 100% !important;
-}
-/* Also override the main content area */
-.projects-page > .container-fluid {
-  max-width: 2500px !important;
-  width: 100% !important;
-}
-.projects-page .row {
-  max-width: 2500px !important;
-  width: 100% !important;
-}
-/* Force full width for main content area */
-.projects-page .row {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-.projects-page .col-md-12 {
-  max-width: 100% !important;
-  width: 100% !important;
 }
 /* Carousel styles */
 .image-carousel {

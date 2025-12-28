@@ -6,6 +6,7 @@ sitemap: false
 permalink: /
 ---
 
+<div class="home-page">
 <!-- ### Sup! - You found me. -->
 <!-- <h2 style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 2.6em;">Sup – You found me.</h2>
 <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 2.5em; letter-spacing: -0.5px;">Sup – You found me.</h2>
@@ -189,3 +190,4 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 </div>
 </div>
 </div>
+</div> <!-- Close home-page div -->

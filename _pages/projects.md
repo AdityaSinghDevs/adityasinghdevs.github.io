@@ -100,7 +100,7 @@ permalink: /projects/
 <div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
 <div class="col-md-4">
-<div style=".="width .width: .100%; .height .200 200pxNo image available" style="width: 100%; height: 200px; background-color: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">
+<div style="width: 100%; height: 200px; background-color: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">
 [Research Image]
 </div>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; text-align: center;">2025 – Present</p>
@@ -116,12 +116,10 @@ permalink: /projects/
 <li><strong>LoRA Analysis:</strong> Investigating how low-rank adaptations affect model representations and reasoning capabilities.</li>
 <li><strong>Quantization Impact:</strong> Studying the trade-offs between model size, inference speed, and performance degradation.</li>
 <li><strong>Attention Dynamics:</strong> Analyzing how compression techniques alter attention patterns and information flow.</li>
-<li><strong>Representation Shifts:</strong> Measuring changes in internal embeddings and feature spaces afterOLT.</li>
-ROP.</li>
-.
+<li><strong>Representation Shifts:</strong> Measuring changes in internal embeddings and feature spaces after compression.</li>
 </ul>
  
-<h5Chnical  style="font-weight600; font-size: 1.1rem; color: #222; margin-bottom: 12px;">Methodology:</h5>
+<h5 style="font-weight: 600; font-size: 1.1rem; color: #222; margin-bottom: 12px;">Methodology:</h5>
 <p style="font-size: 0.95rem; color: #444; margin-bottom: 0;">Comparative Analysis, Attention Visualization, Embedding Analysis, Performance Metrics</p>
 </div>
 </div>

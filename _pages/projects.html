@@ -96,7 +96,7 @@ permalink: /projects/
   transform: rotate(180deg);
 }
 /* Remove hover effect from project page cards only */
-.projects-page .project-card:hover {
+.projects-page .jumbotron:hover {
   background-color: #fafafa !important;
 }
 </style>
@@ -110,7 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
   projectCards.forEach(card => {
     card.classList.add('collapsed');
     const cardContent = card.querySelector('.card-content');
-    cardContent.style.maxHeight = '400px';
+    if (cardContent) {
+      cardContent.style.maxHeight = '400px';
+      cardContent.style.overflow = 'hidden';
+    }
   });
   
   filterButtons.forEach(button => {
@@ -152,19 +155,31 @@ document.addEventListener('DOMContentLoaded', function() {
       const seeMoreText = container.querySelector('.see-more-text');
       const cardContent = card.querySelector('.card-content');
       
+      if (!cardContent) return;
+      
       if (card.classList.contains('collapsed')) {
         // Expand card
         card.classList.remove('collapsed');
         card.classList.add('expanded');
         seeMoreText.textContent = 'See less';
-        // Set max-height to scrollHeight for smooth animation
-        cardContent.style.maxHeight = cardContent.scrollHeight + 'px';
+        // Temporarily disable transition to measure full height
+        cardContent.style.transition = 'none';
+        cardContent.style.maxHeight = 'none';
+        const fullHeight = cardContent.scrollHeight;
+        // Reset to collapsed height and then animate to full height
+        cardContent.style.maxHeight = '400px';
+        cardContent.style.overflow = 'hidden';
+        // Force reflow
+        cardContent.offsetHeight;
+        // Enable transition and expand
+        cardContent.style.transition = 'max-height 0.5s ease-in-out';
+        cardContent.style.maxHeight = fullHeight + 'px';
       } else {
         // Collapse card
         card.classList.remove('expanded');
         card.classList.add('collapsed');
         seeMoreText.textContent = 'See more';
-        // Reset to collapsed height
+        cardContent.style.transition = 'max-height 0.5s ease-in-out';
         cardContent.style.maxHeight = '400px';
       }
     }

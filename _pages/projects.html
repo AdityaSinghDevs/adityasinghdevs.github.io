@@ -10,20 +10,84 @@ permalink: /projects/
 <div class="row">
 <div class="col-md-12">
 <h1 style="font-weight: 700; font-size: 2.5rem; color: #222; margin-bottom: 20px;">Projects</h1>
-<p style="font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 0;">A comprehensive portfolio of my work in AI engineering, spanning production-grade systems, research implementations, and applied machine learning solutions.</p>
+<p style="font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 0;">This page documents my applied AI engineering and research projects, spanning LLM systems, retrieval-augmented generation, model compression, and production-grade ML pipelines.</p>
 </div>
 </div>
 </div>
 
+<!-- Filter Buttons -->
+<div style="text-align: center; margin-bottom: 40px;">
+<div style="width: 100px; height: 1px; background-color: #000; margin: 0 auto 20px;"></div>
+<div id="filter-buttons" style="display: inline-block;">
+<button class="filter-btn active" data-filter="all" style="margin: 0 10px; padding: 8px 20px; border: 1px solid #000; background: #000; color: white; cursor: pointer; font-family: 'Geist', sans-serif; font-weight: 500; border-radius: 4px;">All Projects</button>
+<button class="filter-btn" data-filter="completed" style="margin: 0 10px; padding: 8px 20px; border: 1px solid #000; background: white; color: #000; cursor: pointer; font-family: 'Geist', sans-serif; font-weight: 500; border-radius: 4px;">Completed</button>
+<button class="filter-btn" data-filter="ongoing" style="margin: 0 10px; padding: 8px 20px; border: 1px solid #000; background: white; color: #000; cursor: pointer; font-family: 'Geist', sans-serif; font-weight: 500; border-radius: 4px;">Ongoing</button>
+</div>
+</div>
+
+<style>
+.filter-btn:hover {
+  background-color: #f8f9fa !important;
+}
+.filter-btn.active {
+  background-color: #000 !important;
+  color: white !important;
+}
+.project-card {
+  transition: opacity 0.3s ease;
+}
+.project-card.hidden {
+  display: none;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.backgroundColor = 'white';
+        btn.style.color = '#000';
+      });
+      
+      // Add active class to clicked button
+      this.classList.add('active');
+      this.style.backgroundColor = '#000';
+      this.style.color = 'white';
+      
+      const filter = this.getAttribute('data-filter');
+      
+      // Show/hide projects based on filter
+      projectCards.forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else if (filter === 'completed' && card.classList.contains('completed')) {
+          card.classList.remove('hidden');
+        } else if (filter === 'ongoing' && card.classList.contains('ongoing')) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+});
+</script>
+
 <!-- Project 1: Tesseract -->
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron project-card completed" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
 <img src="{{ '/images/tesseract.gif' | relative_url }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" alt="Text-to-3D mesh generation using diffusion models - Tesseract v1">
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; text-align: center;">August 2025</p>
 <p style="font-size: 0.95rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Text-to-3D mesh generation using diffusion models</p>
 </div>
-<div class="col-md-8">
+<div class="col-md-9">
 <h3 style="font-weight: 700; font-size: 1.6rem; color: #222; margin-bottom: 15px;">Tesseract v1 - Text-to-3D Mesh Generation System</h3>
 
 <h4 style="font-weight: 600; font-size: 1.2rem; color: #222; margin-bottom: 15px; font-style: italic;">Context & Motivation</h4>
@@ -81,14 +145,14 @@ permalink: /projects/
 </div>
 
 <!-- Project 2: Reddit-Persona -->
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron project-card completed" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
 <img src="{{ '/images/reddit.png' | relative_url }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" alt="LLM-based Reddit user persona generation system - Reddit-Persona">
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; text-align: center;">July 2025</p>
 <p style="font-size: 0.95rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">LLM-based user persona generation from Reddit activity</p>
 </div>
-<div class="col-md-8">
+<div class="col-md-9">
 <h3 style="font-weight: 700; font-size: 1.6rem; color: #222; margin-bottom: 15px;">Reddit-Persona - LLM-based User Persona Generation</h3>
 <div style="margin-bottom: 20px;">
 <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 15px;">Developed a production-grade LLM system to analyze Reddit user activity and generate structured, UX-oriented personas. Balances cost, scalability, and usability through intelligent design choices.</p>
@@ -108,14 +172,14 @@ permalink: /projects/
 </div>
 
 <!-- Project 3: MÍMIR -->
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron project-card ongoing" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
 <img src="{{ '/images/mimir.png' | relative_url }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" alt="Research-oriented LLM system for DevOps incident reasoning - MÍMIR">
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; text-align: center;">2025 - Present</p>
 <p style="font-size: 0.95rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Research-oriented LLM system for DevOps incident reasoning</p>
 </div>
-<div class="col-md-8">
+<div class="col-md-9">
 <h3 style="font-weight: 700; font-size: 1.6rem; color: #222; margin-bottom: 15px;">MÍMIR - Research-Oriented LLM System</h3>
 <div style="margin-bottom: 20px;">
 <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 15px;">Designing a research-oriented LLM system to study retrieval-augmented reasoning and parameter-efficient adaptation under realistic system constraints. Emphasizes reproducible evaluation over application demos.</p>
@@ -135,16 +199,16 @@ permalink: /projects/
 </div>
 
 <!-- Project 4: LLM Compression & Interpretability -->
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron project-card ongoing" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
 <div style="width: 100%; height: 200px; background-color: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">
 [Research Image]
 </div>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; text-align: center;">2025 - Present</p>
 <p style="font-size: 0.95rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Research on LLM compression and interpretability</p>
 </div>
-<div class="col-md-8">
+<div class="col-md-9">
 <h3 style="font-weight: 700; font-size: 1.6rem; color: #222; margin-bottom: 15px;">LLM Compression & Interpretability (paper in preparation)</h3>
 <div style="margin-bottom: 20px;">
 <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 15px;">Studying how parameter-efficient fine-tuning and compression techniques alter internal representations and attention dynamics in transformer models. This research bridges the gap between model efficiency and interpretability.</p>
@@ -163,16 +227,16 @@ permalink: /projects/
 </div>
 
 <!-- Project 5: OpenVINO Contributions -->
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron project-card completed" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
 <div style="width: 100%; height: 200px; background-color: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">
 [OpenVINO Logo]
 </div>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; text-align: center;">2024 - 2025</p>
 <p style="font-size: 0.95rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Open-source optimization contributions to Intel OpenVINO</p>
 </div>
-<div class="col-md-8">
+<div class="col-md-9">
 <h3 style="font-weight: 700; font-size: 1.6rem; color: #222; margin-bottom: 15px;">OpenVINO Ecosystem Contributions</h3>
 <div style="margin-bottom: 20px;">
 <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 15px;">Contributed to open-source optimization efforts within Intel's OpenVINO ecosystem, focusing on improving model performance and compatibility for edge deployment scenarios.</p>
@@ -192,16 +256,16 @@ permalink: /projects/
 </div>
 
 <!-- Project 6: Advait AI Community Platform -->
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron project-card ongoing" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
 <div style="width: 100%; height: 200px; background-color: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">
 [Advait Community]
 </div>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; text-align: center;">2025 - Present</p>
 <p style="font-size: 0.95rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">300+ member AI community leadership and platform</p>
 </div>
-<div class="col-md-8">
+<div class="col-md-9">
 <h3 style="font-weight: 700; font-size: 1.6rem; color: #222; margin-bottom: 15px;">Advait AI Community Platform</h3>
 <div style="margin-bottom: 20px;">
 <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 15px;">Leading a 300+ member student-led AI community focused on research-oriented machine learning, systems engineering, and applied AI development. Building both the community culture and technical infrastructure.</p>
@@ -221,16 +285,16 @@ permalink: /projects/
 </div>
 
 <!-- Project 7: ML Systems Research Pipeline -->
-<div class="jumbotron" style="margin-top: 30px; margin-bottom: 30px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="jumbotron project-card ongoing" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
 <div style="width: 100%; height: 200px; background-color: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">
 [Research Pipeline]
 </div>
 <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; text-align: center;">2024 - Present</p>
 <p style="font-size: 0.95rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Production-grade ML research and experimentation pipeline</p>
 </div>
-<div class="col-md-8">
+<div class="col-md-9">
 <h3 style="font-weight: 700; font-size: 1.6rem; color: #222; margin-bottom: 15px;">ML Systems Research Pipeline</h3>
 <div style="margin-bottom: 20px;">
 <p style="font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 15px;">Developed a comprehensive pipeline for reproducible ML research that bridges academic experimentation with production deployment. Focuses on systematic experimentation and reliable results.</p>

@@ -6,7 +6,7 @@ sitemap: true
 permalink: /projects/
 ---
 
-<div style="margin-top: 30px; margin-bottom: 30px;">
+<div style="margin-top: 30px; margin-bottom: 30px;" class="projects-page">
 <div class="row">
 <div class="col-md-12">
 <h1 style="font-weight: 700; font-size: 2.5rem; color: #222; margin-bottom: 20px;">Projects</h1>
@@ -56,12 +56,17 @@ permalink: /projects/
   background: linear-gradient(transparent, rgba(250, 250, 250, 0.9));
   pointer-events: none;
 }
+.card-content {
+  transition: max-height 0.5s ease-in-out;
+  overflow: hidden;
+}
 .see-more-container {
   text-align: center;
   margin-top: -40px;
   position: relative;
   z-index: 10;
   padding-bottom: 20px;
+  margin-left: -25%; /* Shift left to center in full card */
 }
 .see-more-text {
   color: #000;
@@ -90,6 +95,10 @@ permalink: /projects/
 .project-card.expanded .arrow-down {
   transform: rotate(180deg);
 }
+/* Remove hover effect from project page cards only */
+.projects-page .project-card:hover {
+  background-color: #fafafa !important;
+}
 </style>
 
 <script>
@@ -100,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize cards as collapsed
   projectCards.forEach(card => {
     card.classList.add('collapsed');
+    const cardContent = card.querySelector('.card-content');
+    cardContent.style.maxHeight = '400px';
   });
   
   filterButtons.forEach(button => {
@@ -139,15 +150,22 @@ document.addEventListener('DOMContentLoaded', function() {
       const container = e.target.closest('.see-more-container');
       const card = container.closest('.project-card');
       const seeMoreText = container.querySelector('.see-more-text');
+      const cardContent = card.querySelector('.card-content');
       
       if (card.classList.contains('collapsed')) {
+        // Expand card
         card.classList.remove('collapsed');
         card.classList.add('expanded');
         seeMoreText.textContent = 'See less';
+        // Set max-height to scrollHeight for smooth animation
+        cardContent.style.maxHeight = cardContent.scrollHeight + 'px';
       } else {
+        // Collapse card
         card.classList.remove('expanded');
         card.classList.add('collapsed');
         seeMoreText.textContent = 'See more';
+        // Reset to collapsed height
+        cardContent.style.maxHeight = '400px';
       }
     }
   });

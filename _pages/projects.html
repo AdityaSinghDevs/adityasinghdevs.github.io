@@ -509,18 +509,77 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="card-content">
 <h3 style="font-weight: 700; font-size: 1.4rem; color: #222; margin-bottom: 12px;">Reddit-Persona - LLM-based User Persona Generation</h3>
 <div style="margin-bottom: 15px;">
-<p style="font-size: 0.9rem; line-height: 1.5; color: #444; margin-bottom: 12px;">Developed a production-grade LLM system to analyze Reddit user activity and generate structured, UX-oriented personas. Balances cost, scalability, and usability through intelligent design choices.</p>
+<p class="project-text">I built Reddit-Persona to explore how large language models can synthesize coherent behavioral personas from noisy, unstructured, real-world text data. This project originated as a pre-interview internship assignment, but I intentionally extended it beyond initial requirements to understand how LLMs behave when tasked with higher-level reasoning over fragmented user activity rather than direct question answering.</p>
 </div>
-<h4 style="font-weight: 600; font-size: 1.1rem; color: #222; margin-bottom: 10px; font-style: italic;">Key Features & Implementation:</h4>
-<ul style="padding-left: 20px; margin-bottom: 15px; font-size: 0.85rem; line-height: 1.5; color: #444;">
-<li><strong>Chunked Inference:</strong> Processes large user histories efficiently with memory-conscious batching.</li>
-<li><strong>Modular Configuration:</strong> Flexible persona templates and analysis parameters for different use cases.</li>
-<li><strong>Dual Interfaces:</strong> CLI for automation and Streamlit for interactive exploration and visualization.</li>
-<li><strong>Cost Optimization:</strong> Smart caching and token management to minimize LLM API costs.</li>
-<li><strong>Structured Output:</strong> Consistent persona format with demographics, interests, and behavioral patterns.</li>
+
+<h4 class="project-subtitle">Context & Motivation</h4>
+<p class="project-text">I was particularly interested in how design choices around chunking, context density, and output structure affect the quality and interpretability of persona-level outputs.</p>
+
+<h4 class="project-subtitle">Problem Statement</h4>
+<p class="project-text">How can we transform a Reddit user's scattered posts and comments—spanning multiple topics, tones, and timeframes—into a structured, interpretable persona, without overwhelming the model or losing important behavioral signals?</p>
+
+<h4 class="project-subtitle">System Overview</h4>
+<p class="project-text">Reddit-Persona is a modular pipeline that:</p>
+<ul class="project-list">
+<li><strong>Scrapes</strong> a user's public Reddit posts and comments using PRAW</li>
+<li><strong>Cleans and filters</strong> the data to remove deleted or low-signal content</li>
+<li><strong>Splits</strong> activity into topic-consistent text chunks (~2000 characters)</li>
+<li><strong>Sends</strong> each chunk to a large language model for persona synthesis</li>
+<li><strong>Produces</strong> multiple structured persona blocks, each grounded in a different slice of user behavior</li>
 </ul>
-<h4 style="font-weight: 600; font-size: 1.1rem; color: #222; margin-bottom: 10px; font-style: italic;">Technical Stack:</h4>
-<p style="font-size: 0.85rem; color: #444; margin-bottom: 0;">OpenAI API, Reddit PRAW, Streamlit, Data Processing, Persona Modeling</p>
+<p class="project-text">The system supports both a CLI workflow for scripted runs and a Streamlit UI to make persona generation accessible to non-technical users.</p>
+
+<h4 class="project-subtitle">Key Engineering Decisions</h4>
+<p class="project-text">This project emphasized LLM interaction design and reasoning quality, rather than infrastructure scale:</p>
+<ul class="project-list">
+<li><strong>Chunk-based inference</strong> to preserve topical coherence and avoid diluting behavioral signals in long contexts</li>
+<li><strong>Multiple persona generation</strong> (one per chunk) to capture micro-identities instead of forcing a single averaged profile</li>
+<li><strong>Use of LLaMA-3.3-70B via Groq</strong> for persona synthesis, chosen for its strong instruction-following behavior and ability to produce structured, multi-facet analyses from unstructured text</li>
+<li><strong>Structured persona schema</strong> (traits, motivations, frustrations, goals, supporting quotes) to keep outputs interpretable and auditable</li>
+<li><strong>Optional persona ranking logic</strong> to identify the most insight-rich persona block and explain why it was selected</li>
+<li><strong>Streamlit UI integration</strong>, added beyond assignment requirements to study how such outputs are consumed in a visual, user-facing workflow</li>
+</ul>
+<p class="project-text">These decisions were driven by the goal of understanding how to reason with LLM outputs, not just generate text.</p>
+
+<h4 class="project-subtitle">Model Choice Rationale</h4>
+<p class="project-text">I chose LLaMA-3.3-70B for this task because persona synthesis requires semantic abstraction, consistency, and narrative grounding, rather than factual recall or short-form completion.</p>
+<p class="project-text">Compared to smaller models, LLaMA-70B demonstrated:</p>
+<ul class="project-list">
+<li>Better stability across long, unstructured inputs</li>
+<li>More consistent persona traits across chunks</li>
+<li>Stronger adherence to structured output formats</li>
+</ul>
+<p class="project-text">Using Groq's inference API allowed fast, low-latency processing of multiple chunks per user, making iterative experimentation feasible without compromising output quality. This was particularly important given the chunk-based design of the system.</p>
+
+<h4 class="project-subtitle">Engineering & Stack</h4>
+<ul class="project-list">
+<li><strong>Language:</strong> Python</li>
+<li><strong>Data access:</strong> PRAW (Reddit API Wrapper)</li>
+<li><strong>LLM inference:</strong> Groq-hosted LLaMA-3.3-70B</li>
+<li><strong>Interfaces:</strong> CLI (main.py) and Streamlit UI (app.py)</li>
+<li><strong>Structure:</strong> Modular Python files for scraping, inference, formatting, and orchestration</li>
+<li><strong>Environment management:</strong> Conda-based setup for dependency isolation</li>
+</ul>
+<p class="project-text">The project was intentionally kept simple from an infrastructure perspective to focus on reasoning quality, modularity, and clarity.</p>
+
+<h4 class="project-subtitle">Evaluation & Validation</h4>
+<p class="project-text">Evaluation was primarily qualitative and interpretive:</p>
+<ul class="project-list">
+<li><strong>Comparing persona blocks</strong> across chunks to assess behavioral consistency and diversity</li>
+<li><strong>Verifying</strong> that extracted traits and motivations were grounded in explicit Reddit quotes</li>
+<li><strong>Observing</strong> how chunk size and ordering affected persona richness and coherence</li>
+<li><strong>Testing robustness</strong> against sparse activity, deleted content, and mixed-topic histories</li>
+</ul>
+<p class="project-text">The emphasis was on interpretability, traceability, and reasoning fidelity, rather than numerical benchmarks.</p>
+
+<h4 class="project-subtitle">Limitations & Reflections</h4>
+<p class="project-text">This project surfaced several important lessons.</p>
+<p class="project-text">Aggregating all user activity into a single prompt consistently degraded persona quality, reinforcing the importance of chunk-level reasoning. However, generating multiple personas introduced a new ambiguity: deciding which persona to trust. This motivated the addition of an experimental ranking step that re-evaluates persona blocks and selects the most insight-rich candidate, along with an explanation for the choice.</p>
+<p class="project-text">From an engineering standpoint, this was my first project where I became comfortable with clean Python project structuring, modular design, and environment isolation using Conda. While it does not yet include advanced logging or configuration separation, it laid the groundwork for how I structure larger systems today.</p>
+<p class="project-text">Finally, the project highlighted ethical and practical considerations around persona generation from real user data. For this reason, the system is not publicly hosted and requires users to supply their own API keys.</p>
+
+<h4 class="project-subtitle">Status</h4>
+<p class="project-text">Completed — a functional, reasoning-centric system that explores LLM-driven behavioral analysis and serves as an early foundation for more advanced applied and research-oriented work.</p>
 </div>
 <div class="see-more-container">
 <div class="see-more-text">See more</div>
@@ -563,31 +622,114 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </div>
 
-<!-- Project 4: LLM Compression & Interpretability -->
-<div class="jumbotron project-card ongoing" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<!-- Project 4: ORCA v0 - Wearable Computer Vision Glasses Aid -->
+<div class="jumbotron project-card completed" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
 <div class="col-md-4">
-<div style="width: 100%; height: 300px; background-color: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.8rem; margin-bottom: 15px;">
-[Research Image]
-</div>
-<p style="color: #6c757d; font-size: 0.8rem; margin-bottom: 10px; text-align: center;">2025 - Present</p>
-<p style="font-size: 0.85rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Research on LLM compression and interpretability</p>
+<img src="{{ '/images/orca 1.png' | relative_url }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" alt="ORCA wearable computer vision glasses aid system">
+<p style="color: #6c757d; font-size: 0.8rem; margin-bottom: 10px; text-align: center;">College Research Project</p>
+<p style="font-size: 0.85rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Low-cost wearable computer vision glasses aid</p>
 </div>
 <div class="col-md-8">
 <div class="card-content">
-<h3 style="font-weight: 700; font-size: 1.4rem; color: #222; margin-bottom: 12px;">LLM Compression & Interpretability (paper in preparation)</h3>
+<h3 style="font-weight: 700; font-size: 1.4rem; color: #222; margin-bottom: 12px;">ORCA v0 — Wearable Computer Vision Glasses Aid</h3>
 <div style="margin-bottom: 15px;">
-<p style="font-size: 0.9rem; line-height: 1.5; color: #444; margin-bottom: 12px;">Studying how parameter-efficient fine-tuning and compression techniques alter internal representations and attention dynamics in transformer models. This research bridges the gap between model efficiency and interpretability.</p>
+<p class="project-text">Omni-Purpose Real-time Computer-vision Assistant (College Research Project)</p>
 </div>
-<h4 style="font-weight: 600; font-size: 1.1rem; color: #222; margin-bottom: 10px; font-style: italic;">Research Focus Areas:</h4>
-<ul style="padding-left: 20px; margin-bottom: 15px; font-size: 0.85rem; line-height: 1.5; color: #444;">
-<li><strong>LoRA Analysis:</strong> Investigating how low-rank adaptations affect model representations and reasoning capabilities.</li>
-<li><strong>Quantization Impact:</strong> Studying the trade-offs between model size, inference speed, and performance degradation.</li>
-<li><strong>Attention Dynamics:</strong> Analyzing how compression techniques alter attention patterns and information flow.</li>
-<li><strong>Representation Shifts:</strong> Measuring changes in internal embeddings and feature spaces after compression.</li>
+
+<h4 class="project-subtitle">Context & Motivation</h4>
+<p class="project-text">Assistive smart glasses for visually impaired users exist, but they are typically proprietary, expensive (₹1–3 lakh / ~$1,200–$3,600), and tightly coupled to closed hardware and cloud-based inference.</p>
+<p class="project-text">ORCA v0 was built as a college research project to explore a fundamental question: Can modern open-source computer vision models be composed into a low-cost, real-time, wearable vision aid with meaningful assistive capabilities?</p>
+<p class="project-text">The project targeted a novel computer vision glasses concept, using commodity hardware and open-source models to prototype a system that could assist users with environmental awareness, navigation, and social interaction, while remaining affordable and privacy-preserving.</p>
+
+<h4 class="project-subtitle">Problem Statement</h4>
+<p class="project-text">How can we design a multi-purpose wearable computer vision system that:</p>
+<ul class="project-list">
+<li>Operates in real time</li>
+<li>Supports multiple assistive use cases, not a single task</li>
+<li>Runs on low-cost hardware (₹800 ESP32-CAM ≈ $10)</li>
+<li>Avoids cloud dependency for privacy and latency</li>
+<li>Remains modular enough for experimentation and research</li>
 </ul>
-<h4 style="font-weight: 600; font-size: 1.1rem; color: #222; margin-bottom: 10px; font-style: italic;">Methodology:</h4>
-<p style="font-size: 0.85rem; color: #444; margin-bottom: 0;">Comparative Analysis, Attention Visualization, Embedding Analysis, Performance Metrics</p>
+<p class="project-text">...rather than being a closed, single-purpose demo or a high-cost commercial device?</p>
+
+<h4 class="project-subtitle">System Overview</h4>
+<p class="project-text">ORCA follows a hybrid edge-compute architecture designed for prototyping wearable vision systems:</p>
+<ul class="project-list">
+<li><strong>ESP32-CAM (~₹800 / ~$10)</strong> captures live video and streams frames wirelessly</li>
+<li><strong>A local compute node</strong> (PC / edge system) performs all inference</li>
+<li><strong>Multiple computer vision pipelines</strong> run in parallel</li>
+<li><strong>Outputs</strong> are delivered via visual overlays and audio feedback</li>
+<li><strong>Designed to integrate</strong> with a transparent OLED display for wearable glasses (prototype concept)</li>
+</ul>
+<p class="project-text">The system intentionally supports multiple use cases, not just one, making it closer to a general-purpose vision aid than a task-specific demo.</p>
+
+<h4 class="project-subtitle">Core Use Cases Enabled</h4>
+<p class="project-text">ORCA was designed to support and experiment with:</p>
+<ul class="project-list">
+<li><strong>Object Detection</strong> — Identifying common objects in the environment (80+ classes)</li>
+<li><strong>Face Detection & Recognition</strong> — Identifying known vs unknown individuals with audio alerts</li>
+<li><strong>Depth Estimation</strong> — Estimating relative distances for navigation and obstacle awareness</li>
+<li><strong>Multi-Modal Assistance</strong> — Combining visual and audio cues to improve situational awareness</li>
+</ul>
+<p class="project-text">This multi-capability design was deliberate — most college projects focus on one vision task, whereas ORCA explored system-level integration across tasks.</p>
+
+<h4 class="project-subtitle">Key Engineering Decisions</h4>
+<p class="project-text"><strong>1. Multi-Model, Task-Specific Pipelines</strong></p>
+<p class="project-text">Instead of forcing all tasks into a single model, ORCA uses specialized models per capability:</p>
+<ul class="project-list">
+<li><strong>YOLOv10 / NanoDet</strong> — real-time object detection</li>
+<li><strong>YuNet + S-Face</strong> — face detection and recognition</li>
+<li><strong>MiDaS / Depth Anything V2</strong> — monocular depth estimation</li>
+</ul>
+<p class="project-text">This allowed independent benchmarking of accuracy vs latency, faster iteration and model swapping, and clear separation of concerns across pipelines.</p>
+
+<p class="project-text"><strong>2. Low-Cost Hardware Constraint</strong></p>
+<p class="project-text">A strict constraint was using ESP32-CAM instead of high-end sensors or proprietary cameras. This forced realistic engineering trade-offs around frame resolution, network bandwidth, model size and inference speed, and end-to-end latency budgets. This constraint is what makes ORCA meaningful as a wearable assistive CV project, not just a desktop demo.</p>
+
+<p class="project-text"><strong>3. Privacy-Preserving, Local Inference</strong></p>
+<p class="project-text">All inference runs locally: No cloud APIs for face recognition or object detection, no external transmission of sensitive visual data, suitable for assistive and accessibility-related contexts. This mirrors real-world constraints in assistive technology design.</p>
+
+<p class="project-text"><strong>4. Quantization for Real-Time Performance</strong></p>
+<p class="project-text">Models were tested with INT8 quantization, reducing memory usage by ~40–50% while maintaining usable accuracy. This enabled ~8 FPS end-to-end processing, sub-second latency, and feasibility on consumer-grade hardware.</p>
+
+<h4 class="project-subtitle">Engineering & Technology Stack</h4>
+<p class="project-text"><strong>Languages & Frameworks:</strong> Python, OpenCV, PyTorch</p>
+<p class="project-text"><strong>Models:</strong> YOLOv10, NanoDet (object detection), YuNet, S-Face (face detection & recognition), MiDaS / Depth Anything V2 (depth estimation)</p>
+<p class="project-text"><strong>Hardware:</strong> ESP32-CAM (~₹800 / ~$10), Consumer PC / edge device</p>
+<p class="project-text"><strong>System Components:</strong> Wireless video streaming (HTTP), Parallel inference pipelines, Audio alert system, Visual debugging overlays</p>
+
+<h4 class="project-subtitle">Evaluation & Validation</h4>
+<p class="project-text">ORCA was tested across indoor and outdoor environments, focusing on practical usability rather than benchmark chasing.</p>
+<p class="project-text">Approximate observed performance:</p>
+<ul class="project-list">
+<li><strong>Object detection:</strong> ~93% mAP (COCO classes)</li>
+<li><strong>Face detection:</strong> ~90% accuracy</li>
+<li><strong>Face recognition:</strong> ~87% accuracy (local dataset)</li>
+<li><strong>Depth estimation error:</strong> ±10 cm (0.5–3 m range)</li>
+<li><strong>End-to-end throughput:</strong> ~8 FPS</li>
+</ul>
+<p class="project-text">These results validated the feasibility of a low-cost, multi-purpose wearable vision aid, though not production readiness.</p>
+
+<h4 class="project-subtitle">Reflections & Learnings</h4>
+<p class="project-text">This project marked an important transition from single-model demos to system-level computer vision engineering.</p>
+<p class="project-text">Key takeaways:</p>
+<ul class="project-list">
+<li>Multi-model systems introduce orchestration and latency challenges not visible in notebooks</li>
+<li>Hardware constraints force better architectural decisions</li>
+<li>Real-time CV is about trade-offs, not just accuracy</li>
+<li>Assistive technology requires reliability and interpretability, not just performance</li>
+</ul>
+<p class="project-text">ORCA also revealed gaps — configuration management, logging, and abstraction — which directly informed the design of later projects like Tesseract and MÍMIR.</p>
+
+<h4 class="project-subtitle">Limitations & Future Directions</h4>
+<p class="project-text"><strong>Current limitations:</strong> Performance degrades in low-light conditions, Depth estimation adds significant latency, Configuration is partially hard-coded</p>
+<p class="project-text"><strong>Future improvements:</strong> Unified config and logging layers, Better low-light preprocessing, Spatial audio feedback, More capable edge hardware (Jetson / Raspberry Pi)</p>
+
+<h4 class="project-subtitle">Status</h4>
+<p class="project-text"><strong>Status:</strong> Completed (College Research Project)</p>
+<p class="project-text"><strong>Nature:</strong> Experimental research & prototyping</p>
+<p class="project-text"><strong>Outcome:</strong> Demonstrated feasibility of a low-cost, multi-purpose computer vision glasses aid</p>
 </div>
 <div class="see-more-container">
 <div class="see-more-text">See more</div>

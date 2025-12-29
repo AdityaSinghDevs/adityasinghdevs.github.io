@@ -739,31 +739,154 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </div>
 
-<!-- Project 5: OpenVINO Contributions -->
+<!-- Project 5: Vulkyrie v1 - Edge-Deployed Carcass Contamination Detection System -->
 <div class="jumbotron project-card completed" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
 <div class="row">
 <div class="col-md-4">
-<div style="width: 100%; height: 300px; background-color: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 0.8rem; margin-bottom: 15px;">
-[OpenVINO Logo]
-</div>
-<p style="color: #6c757d; font-size: 0.8rem; margin-bottom: 10px; text-align: center;">2024 - 2025</p>
-<p style="font-size: 0.85rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Open-source optimization contributions to Intel OpenVINO</p>
+<img src="{{ '/images/vulkyrie 1.png' | relative_url }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" alt="Vulkyrie edge-deployed contamination detection system">
+<p style="color: #6c757d; font-size: 0.8rem; margin-bottom: 10px; text-align: center;">College Project & Hackathon</p>
+<p style="font-size: 0.85rem; font-style: italic; color: #555; text-align: center; margin-bottom: 0;">Edge-deployed contamination detection system</p>
 </div>
 <div class="col-md-8">
-<h3 style="font-weight: 700; font-size: 1.4rem; color: #222; margin-bottom: 12px;">OpenVINO Ecosystem Contributions</h3>
+<div class="card-content">
+<h3 style="font-weight: 700; font-size: 1.4rem; color: #222; margin-bottom: 12px;">Vulkyrie v1 — Edge-Deployed Carcass Contamination Detection System</h3>
 <div style="margin-bottom: 15px;">
-<p style="font-size: 0.9rem; line-height: 1.5; color: #444; margin-bottom: 12px;">Contributed to open-source optimization efforts within Intel's OpenVINO ecosystem, focusing on improving model performance and compatibility for edge deployment scenarios.</p>
+<p class="project-text">Low-cost, field-deployable computer vision and IIoT system for chemical contamination screening using color-based sensing and lightweight machine learning.</p>
 </div>
-<h4 style="font-weight: 600; font-size: 1.1rem; color: #222; margin-bottom: 10px; font-style: italic;">Contribution Areas:</h4>
-<ul style="padding-left: 20px; margin-bottom: 15px; font-size: 0.85rem; line-height: 1.5; color: #444;">
-<li><strong>Model Optimization:</strong> Improved conversion pipelines for popular transformer architectures.</li>
-<li><strong>Performance Tuning:</strong> Optimized inference kernels for specific hardware configurations.</li>
-<li><strong>Documentation:</strong> Enhanced technical documentation and usage examples.</li>
-<li><strong>Community Support:</strong> Active participation in issue resolution and feature discussions.</li>
-<li><strong>Testing Framework:</strong> Contributed to automated testing and validation procedures.</li>
+
+<h4 class="project-subtitle">Context & Motivation</h4>
+<p class="project-text">Monitoring chemical contamination in the field is often expensive, slow, and inaccessible, especially in rural or resource-constrained environments. In India alone, laboratory-grade chemical tests can cost ₹600–₹1200 ($7–$15) per sample, making large-scale or frequent monitoring impractical.</p>
+<p class="project-text">Vulkyrie was built as a low-cost, field-deployable computer vision and IIoT system to explore whether color-based sensing + lightweight machine learning can serve as an early-warning mechanism for chemical contamination.</p>
+<p class="project-text">This project specifically targeted Diclofenac contamination, a chemical linked to a catastrophic 99% collapse of India's vulture population, with severe downstream ecological and public-health consequences. The goal was not laboratory-grade accuracy, but rapid, accessible, and scalable screening.</p>
+
+<h4 class="project-subtitle">Problem Statement</h4>
+<p class="project-text">How can chemical contamination be detected cheaply, in real time, and in the field, using hardware that costs under ₹1000 ($12–$15), while still producing meaningful, interpretable outputs that can guide further investigation?</p>
+
+<h4 class="project-subtitle">System Overview</h4>
+<p class="project-text">Vulkyrie is an end-to-end research-to-prototype pipeline spanning:</p>
+<ul class="project-list">
+<li><strong>Data collection & chemical testing</strong></li>
+<li><strong>ML model training and analysis</strong></li>
+<li><strong>Edge deployment on ESP32 microcontrollers</strong></li>
+<li><strong>IIoT-style backend aggregation</strong></li>
+<li><strong>Geospatial visualization via a web dashboard</strong></li>
 </ul>
-<h4 style="font-weight: 600; font-size: 1.1rem; color: #222; margin-bottom: 10px; font-style: italic;">Technical Stack:</h4>
-<p style="font-size: 0.85rem; color: #444; margin-bottom: 0;">C++, Python, OpenVINO Toolkit, Model Optimization, Edge Computing</p>
+<p class="project-text">Rather than focusing purely on model accuracy, the system emphasizes deployment realism, hardware constraints, and operational usability.</p>
+
+<h4 class="project-subtitle">Key Engineering Decisions</h4>
+<p class="project-text"><strong>Random Forest Regression</strong> was chosen over deep models due to:</p>
+<ul class="project-list">
+<li>Small, physically collected dataset</li>
+<li>Interpretability of decision paths</li>
+<li>Ease of pruning and simplification for microcontrollers</li>
+</ul>
+
+<p class="project-text"><strong>Edge-first design:</strong></p>
+<ul class="project-list">
+<li>Models were explicitly constrained to fit ESP32 memory and compute limits</li>
+</ul>
+
+<p class="project-text"><strong>Model-to-hardware translation:</strong></p>
+<ul class="project-list">
+<li>Full Random Forest logic was analyzed and reduced into threshold-based inference suitable for real-time execution</li>
+</ul>
+
+<p class="project-text"><strong>Data augmentation over brute-force modeling:</strong></p>
+<ul class="project-list">
+<li>Real chemical testing is costly and slow, so robustness was improved through controlled RGB noise injection</li>
+</ul>
+
+<p class="project-text"><strong>Centralized IIoT backend:</strong></p>
+<ul class="project-list">
+<li>Enables hotspot identification and geographic tracking of contamination events</li>
+</ul>
+
+<h4 class="project-subtitle">Computer Vision & ML Pipeline</h4>
+<p class="project-text"><strong>Input:</strong> RGB values from TCS3200 color sensor</p>
+<p class="project-text"><strong>Preprocessing:</strong></p>
+<ul class="project-list">
+<li>MinMax feature scaling</li>
+<li>Noise-based data augmentation (3× expansion)</li>
+</ul>
+<p class="project-text"><strong>Model:</strong></p>
+<ul class="project-list">
+<li>Pruned Random Forest Regressor (n_estimators=15, max_depth=5)</li>
+</ul>
+<p class="project-text"><strong>Outputs:</strong></p>
+<ul class="project-list">
+<li>Continuous contamination concentration</li>
+<li>Mapped to discrete risk levels: NEGATIVE, LOW, MODERATE, HIGH</li>
+</ul>
+
+<h4 class="project-subtitle">Edge Deployment & Hardware</h4>
+<ul class="project-list">
+<li><strong>Microcontroller:</strong> ESP32</li>
+<li><strong>Sensor:</strong> TCS3200 color sensor</li>
+</ul>
+<p class="project-text"><strong>Inference:</strong></p>
+<ul class="project-list">
+<li>Simplified threshold logic derived from trained model</li>
+</ul>
+<p class="project-text"><strong>Interaction:</strong></p>
+<ul class="project-list">
+<li>Button-triggered sampling with reaction delay</li>
+<li>Serial output for debugging and logging</li>
+</ul>
+<p class="project-text"><strong>Cost:</strong></p>
+<ul class="project-list">
+<li>One-time hardware cost: ₹800–₹1000 ($10–$12)</li>
+<li>Per-test cost: ~₹100 (<$1)</li>
+</ul>
+<p class="project-text">This makes Vulkyrie orders of magnitude cheaper than conventional lab testing for preliminary screening.</p>
+
+<h4 class="project-subtitle">Backend & Visualization</h4>
+<ul class="project-list">
+<li><strong>REST API:</strong> Node.js + Express</li>
+<li><strong>Database:</strong> PostgreSQL for structured storage</li>
+<li><strong>Frontend:</strong> React + Leaflet</li>
+</ul>
+<p class="project-text">Interactive geographic contamination maps, centralized monitoring of distributed devices. Designed to simulate IIoT-style deployment, not just a standalone device.</p>
+
+<h4 class="project-subtitle">Evaluation & Validation</h4>
+<p class="project-text"><strong>Dataset:</strong></p>
+<ul class="project-list">
+<li>24 physically collected chemical samples</li>
+<li>Augmented to 72 samples for robustness</li>
+</ul>
+<p class="project-text"><strong>Evaluation focused on:</strong></p>
+<ul class="project-list">
+<li>Consistency under lighting variation</li>
+<li>Stability of edge inference</li>
+<li>Qualitative agreement with known concentration levels</li>
+</ul>
+<p class="project-text">The system is explicitly positioned as early-warning & screening, not definitive diagnosis.</p>
+
+<h4 class="project-subtitle">Reflections & Learnings</h4>
+<p class="project-text">This project was intentionally ambitious for its scope and constraints. The most challenging aspects were:</p>
+<ul class="project-list">
+<li>Real-world data collection involving chemical handling and concentration calibration</li>
+<li>Translating an ML model into resource-constrained embedded logic</li>
+<li>Understanding where engineering trade-offs matter more than raw model accuracy</li>
+<li>Designing systems that actually run outside notebooks</li>
+</ul>
+<p class="project-text">Vulkyrie was also one of the first projects where I deeply engaged with:</p>
+<ul class="project-list">
+<li>Edge ML constraints</li>
+<li>Model simplification strategies</li>
+<li>Hardware–software co-design</li>
+<li>End-to-end system thinking beyond model training</li>
+</ul>
+
+<h4 class="project-subtitle">Status</h4>
+<p class="project-text"><strong>Stage:</strong> Experimental / Prototype</p>
+<p class="project-text"><strong>Context:</strong> College project & hackathon prototype</p>
+<p class="project-text"><strong>Readiness:</strong> Not production-grade, but technically validated</p>
+<p class="project-text"><strong>Positioning:</strong> Proof-of-concept for low-cost, AI-assisted contamination screening</p>
+</div>
+<div class="see-more-container">
+<div class="see-more-text">See more</div>
+<div class="arrow-down"></div>
+</div>
 </div>
 </div>
 </div>

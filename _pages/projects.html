@@ -87,27 +87,13 @@ body .projects-page .row {
   display: none;
 }
 
-/* Custom grid layout without Bootstrap */
-.project-layout {
-  display: flex;
-  gap: 30px;
-  align-items: flex-start;
-}
+/* Custom grid layout without Bootstrap - removed for consistency */
+/* All projects now use Bootstrap .jumbotron .row .col-md-4 structure */
 
-.project-image-column {
-  flex: 0 0 33.33%;
-  max-width: 33.33%;
-}
-
-/* Ensure Bootstrap columns match custom layout */
+/* Ensure Bootstrap columns have consistent sizing */
 .jumbotron .col-md-4 {
   max-width: 33.33%;
   flex: 0 0 33.33%;
-}
-
-.project-content-column {
-  flex: 1;
-  min-width: 0;
 }
 
 /* Images */
@@ -545,10 +531,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- Project 1: Tesseract -->
-<div class="content-wrapper">
-<div class="project-card completed">
-<div class="project-layout">
-<div class="project-image-column">
+<div class="jumbotron project-card completed" style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div class="row">
+<div class="col-md-4">
 <div class="image-carousel">
 <img src="{{ '/images/tesseract.gif' | relative_url }}" class="main-image" alt="Text-to-3D mesh generation using diffusion models - Tesseract v1">
 <div class="thumbnail-controls">
@@ -565,7 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="project-meta">August 2025</p>
 <p class="project-description">Text-to-3D mesh generation using diffusion models</p>
 </div>
-<div class="project-content-column">
+<div class="col-md-8">
 <div class="card-content">
 <h3 class="project-title">Tesseract v1 - Text-to-3D Mesh Generation System</h3>
 

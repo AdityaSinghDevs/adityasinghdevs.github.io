@@ -23,29 +23,38 @@ It also helps us to understand the fundamental principles that govern the behavi
 Theoretical physics helps us to make progress in a wide range of fields, including cosmology, particle physics, and quantum mechanics, and it has led to many important discoveries and technological innovations. -->
 
 <div class="row">
-<div class="col-md-7 col-sm-12">
-## Hi, I'm Aditya.
+<div class="col-md-6 col-sm-12">
+<h1 class="home-intro-title">Hi there, I'm Aditya.</h1>
 
-I am an AI engineer and research-oriented undergraduate focused on **computer vision, diffusion models, and large language model systems**, with an emphasis on **reproducible experimentation, production-grade AI pipelines**.
+<p>I study how LLMs and transformers work, not the ones from the movies, unfortunately. The other kind!</p>
 
-My work spans applied computer vision, LLM-based systems, and open-source contributions, including work on **Intel OpenVINO**. I am particularly interested in the intersection of **model architecture, training workflows, and system-level design**, and how these choices affect real-world deployment and research validity.
+<p> What's actually wired together under there, how information moves through it, how it can be nudged into behaving differently, and the math underneath all of it that the marketing conveniently skips.</p>
 
-This website serves as a record of my **projects, research directions, technical writing, and academic progress**.
 
-## About Me
+<p>My interest sits squarely in the field of mechanistic interpretability, simply said: less "does the model perform well," more "what is it actually doing in there, and can I catch it in the act."
 
-I am an undergraduate engineerinng student majoring in Artificial Intelligence and Data Science, with a strong interest in **research-oriented machine learning systems and applied LLM engineering**.
+<!-- So far that's meant building things from scratch when I can — a transformer, tokenizer to training loop, no wrappers to hide behind — mostly because I don't fully trust an abstraction I haven't taken apart with my own hands. From there I've been mapping attention heads into circuits, tracing how representations evolve layer by layer, and generally trying to turn "the model just does that" into an actual explanation. -->
 
-My interests lie in understanding how **modern language models behave under practical constraints**, particularly in settings involving **parameter-efficient adaptation, model compression, and retrieval-augmented reasoning**. I am especially drawn to research that emphasizes **clear problem formulation, controlled experimentation, and reproducibility**, rather than isolated benchmark gains.
+</p>
 
-In parallel, I have built **production-grade AI systems**, including scalable inference services, modular ML pipelines, and deployment-ready backends, following close to production level practices. These systems-level experiences strongly inform how I approach research questions in practice.
 
-I have contributed to open-source optimization efforts within **Intel's OpenVINO ecosystem**, and I currently lead **Advait**, a 300+ member AI community, where I coordinate teams, research- and project-focused initiatives and events.
 
-My long-term goal is to work as a **research engineer**, bridging the gap between modern machine learning research and reliable, high-impact real-world systems.
+<!-- <p>Where I want to take it next is less comfortable, in a good way: the question of identity — what it might mean for a model to represent something like a self, a persona, a consistent "I" across contexts, and whether that has any real analogue to how identity shows up in biological neural systems. I don't think that question has a clean answer yet. That's exactly why I want to be one of the people poking at it.</p> -->
+
+
+<!-- <p>I don't think this field is a hype cycle passing through. I think it's the most interesting problem currently on offer, and one of the few where genuinely understanding a system might matter as much as making it powerful. My bet is that mechanistic interpretability isn't just an academic curiosity sitting off to the side of "real" AI progress — it's one of the more direct paths to AI that's not just capable but trustworthy: systems we can actually audit, catch when they're quietly doing something we didn't intend, and build stronger foundations on top of, instead of stacking capability on top of a black box and hoping. That's the version of this field I want to spend my time in, and the kind of finding I'd eventually like to leave behind — something worth citing, once I've actually earned it.</p> -->
+
+<p>Away from a terminal, it's usually music on loop, an ongoing and only mildly one-sided appreciation for art, and philosophical rabbit holes I have no business going down.</p>
+
+<p>This site is the paper trail. The parts that worked, the parts that spectacularly didn't, and the slow, unglamorous middle where most of the actual learning happens. Projects, write-ups, papers, half-formed ideas that eventually became something. Read in order or don't; either way, it's all still here.</p>
+
+<h5 style="font-family: 'Alegreya', Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 1.5em; color: #222;">
+  <i>Machines converge. But humans? They transcend.</i>
+</h5>
 
 </div>
-<div class="col-md-5 col-sm-12">
+<!-- ACCIDENTALLY COMMENTED OUT: Profile photo and social icons section -->
+<div class="col-md-6 col-sm-12">
 {% for member in site.data.pi %}
 <div class="jumbotron">
    <center>
@@ -58,13 +67,13 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
      {% if member.github %}<a href="{{ member.github }}" target="_blank" aria-label="GitHub" style="color: #333333; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;"><i class="fa fa-github fa-2x"></i></a>{% endif %}
    </div>
    <div style="margin-top: 20px; padding: 0 10px; text-align: center;">
-     <p style="color: #6c757d; font-size: 0.6rem; line-height: 2.0; margin: 1;">
-       <strong style="color: #495057; font-size: 0.8rem;">Current focus</strong><br>
-       NLP & LLM systems (RAG, reasoning, system design)<br>
-       Model architectures, compression, and efficiency<br>
-       Industrial-grade ML/DL practices and reproducible<br>
-       experimentation
-     </p>
+      <p style="color: #6c757d; font-size: 0.8rem; line-height: 2.0; margin: 1;">
+        <strong style="color: #495057; font-size: 1.5rem;">Current focus</strong><br>
+       Mechanistic Interpretability
+        • Attention & Circuit Analysis<br>
+        • Activation Steering and Eval awareness<br>
+        • Applied ML Systems Rigorous, Reproducible Experimentation
+      </p>
    </div>
    </center>
 </div>
@@ -73,10 +82,7 @@ My long-term goal is to work as a **research engineer**, bridging the gap betwee
 </div>
 
 
-<h5 style="font-family: 'Geist', sans-serif; font-weight: 700; font-size: 1.5em; color: #222;">
-  Machines Converge.<br>But Humans?<br>They transcend.
-</h5>
-<p style="font-size: 0.9em; font-style: italic; color: #444; margin-top: -10px; margin-left : 160px;"> – Aditya</p><br>
+
 
 <div style="width: 100%; height: 1px; background-color: #e0e0e0; margin: 20px 0;"></div>
 

@@ -12,7 +12,7 @@ img {
 
 .navbar {
   margin-bottom: 20px;
-  border-bottom: 4px solid var(--secondary);
+  border-bottom: 0.5px solid #d0d0d0;
 }
 
 .btn {
@@ -21,13 +21,15 @@ img {
 }
 
 .container-fluid {
-  max-width: 800px;
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .container-footer {
   margin-right: auto;
   margin-left: auto;
-  max-width: 800px;
+  max-width: 1200px;
   padding-left:  20px;
   padding-right: 20px;
 }

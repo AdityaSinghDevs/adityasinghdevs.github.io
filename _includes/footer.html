@@ -25,3 +25,29 @@
 </div>
 
 <script src="{{ "/assets/javascript/bootstrap/bootstrap.bundle.min.js" | relative_url }}"></script>
+<script>
+  (function () {
+    var toggle = document.querySelector('.theme-toggle');
+    if (!toggle) return;
+
+    function syncToggle() {
+      var isDark = document.documentElement.dataset.theme === 'dark';
+      toggle.setAttribute('aria-pressed', String(isDark));
+      toggle.setAttribute('aria-label', isDark ? 'Enable light mode' : 'Enable dark mode');
+    }
+
+    syncToggle();
+    toggle.addEventListener('click', function () {
+      var isDark = document.documentElement.dataset.theme === 'dark';
+      if (isDark) {
+        delete document.documentElement.dataset.theme;
+      } else {
+        document.documentElement.dataset.theme = 'dark';
+      }
+      try {
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      } catch (error) { /* Theme still works for this visit. */ }
+      syncToggle();
+    });
+  }());
+</script>

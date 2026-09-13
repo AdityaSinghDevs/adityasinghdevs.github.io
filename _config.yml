@@ -3,7 +3,7 @@ title: Aditya Pratap Singh
 email: adityasingh.devs@gmail.com
 description: Academic webpage of Aditya Singh
 baseurl: ""
-url: "https://adityasinghdevs.github.io"
+url: ""
 
 # Google analytics ID: Uncomment and your own, if you like
 # google_analytics: XX
@@ -32,6 +32,7 @@ nav_pages:
   - name: projects     # Add this one!
   - name: blogs
   - name: publications
+  - name: work
   - name: talks
   - name: research
   - name: resume       # Add if you want a dedicated resume page

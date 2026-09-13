@@ -127,7 +127,7 @@ permalink: /work/
 }
 
 .work-tag-orange {
-  background-color: #3e2404;
+  background-color: #b5560c;
   color: #fff;
   border: none;
 }

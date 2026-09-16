@@ -12,11 +12,11 @@ permalink: /work/
     <div class="work-main">
       <div class="work-left-col">
         <div class="work-date">{{ entry.date }}</div>
-        <div class="work-tag {% if entry.tag_style == 'filled' %}work-tag-filled{% elsif entry.tag_style == 'orange' %}work-tag-orange{% else %}work-tag-outline{% endif %}">{{ entry.tag }}</div>
+        <div class="work-tag" style="background-color: {{ entry.tag_color }}; color: #fff; border: none;">{{ entry.tag }}</div>
       </div>
       <div class="work-right-col">
         <div class="work-title">
-          <a href="{{ site.url }}{{ site.baseurl }}/misc/{{ entry.slug }}.html">{{ entry.title }}</a>
+          <a href="{{ site.baseurl }}/work/{{ entry.html_file }}">{{ entry.title }}</a>
         </div>
         <div class="work-authors">{{ entry.authors }}</div>
         <p class="work-description">{{ entry.description }}</p>
@@ -33,10 +33,19 @@ permalink: /work/
 {:/nomarkdown}
 
 <style>
+.container-fluid {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.row {
+  margin: 0 !important;
+}
+
 .work-feed {
-  max-width: 900px;
+  max-width: 1150px;
   margin: 0 auto;
-  padding: 40px 10px;
+  padding: 40px 20px;
 }
 
 .work-entry {
@@ -111,13 +120,19 @@ permalink: /work/
 }
 
 .work-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 3px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.3;
+  min-height: 28px;
 }
 
 .work-tag-filled {

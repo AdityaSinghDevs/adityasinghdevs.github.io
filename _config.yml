@@ -41,6 +41,7 @@ nav_pages:
 include:
   - .htaccess
   - _pages
+  - _work
 
 # Conversion
 markdown: kramdown

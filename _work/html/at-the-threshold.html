@@ -1,0 +1,311 @@
+---
+layout: null
+permalink: /work/at-the-threshold.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>At the Threshold: What's Actually Happening Inside a Tiny Transformer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}/images/favicon_red.png">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/main.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/_work/css/at-the-threshold.css">
+</head>
+<body>
+
+{% include header.html %}
+
+<div class="hero">
+  <span class="kicker">Preprint</span>
+  <h1 class="title">At the Threshold</h1>
+  <p class="subtitle">What happens when you crack open a tiny transformer and actually watch it think.</p>
+  <div class="byline">Aditya Pratap Singh Rajawat</div>
+</div>
+
+<div class="wrap">
+<div class="note">
+  <p><strong>Quick heads up before you dive in:</strong> this is the web version of a paper I wrote, not the paper itself. I've kept every finding, every number, and every conclusion, but I've stripped out the academic scaffolding (citation stacking, throat-clearing, saying the same thing three times in three different sections because that's apparently how peer review likes it) and written it the way I'd actually explain it to you over coffee.</p>
+  <p>If you want the full formal version with proper citations, methodology write-up, and a reference list you can cite in your own work, it's linked in the Publications section of this site. This page is for reading, not citing.</p>
+</div>
+</div>
+
+<main>
+
+<h2><span class="num">Chapter 0</span>Why should you care what's inside a transformer?</h2>
+
+<p>Here's a weird thing about the last few years of AI. Language models write code, hold conversations, and do things that look suspiciously like reasoning. And almost every single one of them, from the chatbot on your phone to whatever massive thing is running behind the scenes at a big lab, is built on the same basic blueprint: the Transformer, introduced back in 2017.</p>
+
+<p>Same engine, wildly different results depending on the size of the fuel tank. Which is a little unsettling if you think about it. We know <em>what</em> these things can do. We have benchmarks, leaderboards, vibes-based Twitter threads about which model is "smarter." What we mostly don't know is <em>how</em> they do it. That's the question this whole project is chasing. Not "can it write a sonnet," but "what is actually happening, mechanically, between the input and the output."</p>
+
+<p>This is the job of a field called <strong>mechanistic interpretability</strong>. Think of it as the difference between a mechanic who can tell you your car "drives fine" and one who can pop the hood and tell you exactly which cylinder is misfiring and why. Most AI research has been the first kind of mechanic. This paper is an attempt at the second kind, on a model small enough that you can actually see every cylinder.</p>
+
+<h3>Two people staring at the same engine, describing different things</h3>
+
+<p>If you've read any interpretability work before, you've probably noticed it tends to fall into one of two camps, and they don't talk to each other nearly as much as you'd expect.</p>
+
+<p><strong>Camp one</strong> looks at attention patterns. This is the mechanism that lets a token in a sentence "look back" at other tokens to gather context. People in this camp treat attention weights like a wiring diagram: which word is talking to which other word, and what does that routing tell us about the circuit being built.</p>
+
+<p><strong>Camp two</strong> looks at hidden states. Every time information passes through a layer, it gets tucked into a big vector called the residual stream, and this camp studies how that vector changes shape and direction as it travels deeper into the network. Think of it less like wiring and more like a snowball rolling downhill, picking up more and more stuff as it goes.</p>
+
+<p>Both camps have produced real insight. But they're rarely run on the exact same model, at the exact same time, on the exact same sentence, by the same people, checking whether their two stories actually agree with each other. That's the gap this project tries to fill. Not by inventing a new theory, but by literally running both analyses side by side and seeing if they tell the same story or two completely different ones.</p>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 1 &mdash; Overview diagram: one forward pass splitting into two independent tracks (attention routing and hidden-state representations), which converge into "cross-method corroboration" and a set of mechanistic hypotheses.</span></div>
+  <figcaption>The whole workflow in one picture. Two witnesses, one crime scene.</figcaption>
+</div>
+
+<h2><span class="num">Chapter 1</span>Meet NanoLens (the model, not a superhero, though the name suggests otherwise)</h2>
+
+<p>To run this comparison properly, I needed a model small enough to inspect completely. Not "we sampled a representative subset of attention heads." Every head. Every layer. No corners cut.</p>
+
+<p>Enter <strong>NanoLens</strong>, a small character-level transformer built on top of Andrej Karpathy's nanoGPT. "Character-level" means it reads and predicts one character at a time, rather than chunking text into subword tokens the way GPT-style models usually do. This is a deliberate choice, not a limitation. Feeding a model raw characters means any structure it learns (word boundaries, punctuation, capitalization patterns) has to emerge on its own, instead of being handed to it pre-chopped by a tokenizer. It's the difference between studying a chef who's been given pre-diced vegetables versus one who has to figure out where the onion ends and the pepper begins.</p>
+
+<div class="stat-row">
+  <div class="stat"><span class="num">25.4M</span><span class="label">parameters</span></div>
+  <div class="stat"><span class="num">8</span><span class="label">layers</span></div>
+  <div class="stat"><span class="num">64</span><span class="label">attention heads total</span></div>
+  <div class="stat"><span class="num">100</span><span class="label">character vocabulary</span></div>
+</div>
+
+<p>I trained it on roughly 4.4 million characters of Dostoevsky (<em>Crime and Punishment</em>, <em>The Brothers Karamazov</em>, <em>The Idiot</em>). Not because I'm trying to build the world's most depressing autocomplete, but because long, dense, dialogue-heavy prose gives a model plenty of structure to latch onto: recurring characters, long-range context, punctuation used with intent. It's a much richer training ground than, say, a pile of product reviews.</p>
+
+<p>This is not a model built to be impressive. It's a model built to be <em>see-through</em>. Every head and every layer stays small enough to inspect by hand, while still being large enough to develop real, non-trivial internal structure. The training itself was unremarkable in the best way: standard next-token prediction, AdamW optimizer, 5000 steps, and a final validation loss close enough to the training loss (1.114 vs 1.061) that I could be confident it wasn't just memorizing Dostoevsky word for word.</p>
+
+<h3>The one sentence that gets all the attention (pun intended)</h3>
+
+<p>Every single result in this piece comes from running one sentence through the trained model and watching what happens:</p>
+
+<div class="prompt-box">
+  <span class="tag">The inspection prompt</span>
+  "Raskolnikov hesitated at the threshold, his hands trembling."
+</div>
+
+<p>Yes, that's a wink at the paper's title. But it's also a genuinely useful test sentence: it has a proper noun, ordinary words, a comma, a period, and several spaces in different contexts. That's enough variety to probe how the model treats structurally different kinds of characters, without hand-crafting some artificial trick sentence designed to force a particular behaviour into existence.</p>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 2 &mdash; Data acquisition workflow: the inspection prompt flowing through all 8 transformer layers, with attention matrices being pulled from every head on one side, and hidden states being pushed out via forward hooks on the other.</span></div>
+  <figcaption>One forward pass, two completely independent measurement streams. Like wiring a heart monitor and a brain scanner to the same patient at the same time.</figcaption>
+</div>
+
+<h2><span class="num">Chapter 2</span>Six personalities hiding inside the attention heads</h2>
+
+<p>Here's where it gets fun. I went through all 64 attention heads, one by one, and asked a simple question of each: what is this head consistently looking at? Not in a single instant, but as a repeated, dominant habit.</p>
+
+<p>What emerged wasn't random. It sorted itself into six recurring "personality types." Think of it like sorting your coworkers by what they actually do in meetings, regardless of their job title.</p>
+
+<div class="circuit-grid">
+  <div class="circuit-card">
+    <h4>The Previous-Token Head</h4>
+    <p>Obsessively focused on whatever character came right before. The office equivalent of someone who only ever responds to the last message in the group chat, never scrolling up. A handful of these heads got a little more expansive and glanced two or three characters back, like someone who at least remembers what you said a minute ago.</p>
+  </div>
+  <div class="circuit-card">
+    <h4>The Identity-Preservation Head</h4>
+    <p>Mostly attends to itself. Sounds narcissistic, but it's actually doing something useful: reinforcing the current token's own representation before letting new context muddy it. The "let me finish my thought before you interrupt me" head.</p>
+  </div>
+  <div class="circuit-card">
+    <h4>The Word-Boundary Head</h4>
+    <p>Treats spaces like little checkpoints, organizing its attention around where one word ends and the next begins. This is a head that has independently figured out what a "word" is, despite never being told, because it only ever sees raw characters.</p>
+  </div>
+  <div class="circuit-card">
+    <h4>The First-Token Sink (BOS) Head</h4>
+    <p>Keeps routing attention back to the very first character of the sequence, regardless of what's actually happening at the moment. This becomes a recurring character in this story, so remember it. Think of it as the office group chat's pinned message: everyone keeps glancing back at it, even mid-conversation.</p>
+  </div>
+  <div class="circuit-card">
+    <h4>The Punctuation-Separator Head</h4>
+    <p>Uses commas and periods as natural dividers between chunks of meaning, the way you'd use chapter breaks to organize a book rather than treating it as one unbroken wall of text.</p>
+  </div>
+  <div class="circuit-card">
+    <h4>The Abstract-Routing Head</h4>
+    <p>The wildcard. Connects tokens that are contextually related but nowhere near each other, with no obvious local or structural pattern explaining the connection. If the other five heads are following a recipe, this one is improvising based on flavour.</p>
+  </div>
+</div>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 3 &mdash; Two heatmaps of "previous-token" style attention heads (Layer 1 and Layer 2), both showing a strong diagonal band with a slight widening to two or three positions back.</span></div>
+  <figcaption>The diagonal line is the tell: attention concentrated almost entirely on the token right behind, plus a little wiggle room.</figcaption>
+</div>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 4 &mdash; Grid of six heatmaps, one representative example per circuit class: previous-token, identity-preservation, word-boundary, first-token sink, punctuation-separator, abstract-routing.</span></div>
+  <figcaption>The full cast of characters, side by side. Rows are "who's looking," columns are "who they're looking at," and darker means "looking harder."</figcaption>
+</div>
+
+<h2><span class="num">Chapter 3</span>Layer 3: where the plot twists</h2>
+
+<p>Once I had the taxonomy, the obvious next question was: are these six personalities scattered randomly across the eight layers, or do they show up in a particular order? Turns out, very much the latter.</p>
+
+<p>Picture the network's eight layers like the levels of a video game, each with its own boss fight and its own vibe.</p>
+
+<p><strong>Levels 0 to 2 (the tutorial zone):</strong> dominated almost entirely by Previous-Token Heads, with Identity-Preservation Heads making their only real appearance here. The first faint signs of Word-Boundary behaviour start to show up too. Everything is still very local, very literal. Nobody's improvising yet.</p>
+
+<p><strong>Level 3 (the boss fight):</strong> this is the layer where things visibly shift. Abstract Routing starts to take over as the dominant behaviour, First-Token Sink behaviour starts appearing as a background habit, and this is also the only place in the network where the "extended lookback" previous-token heads (the ones peeking two or three characters back) show up. It's the messiest, most mixed layer in the whole model, which is exactly what you'd expect from a genuine transition rather than a hard on/off switch.</p>
+
+<p><strong>Levels 4 through 7 (the boss's home turf):</strong> Abstract Routing is now firmly in charge. Dedicated First-Token Sink heads appear for the first time as their own specialized thing rather than a side habit. Word-Boundary behaviour keeps showing up here and there but never claims its own dedicated heads. Punctuation-Separator heads finally emerge too, though they stay a minority taste throughout the model's whole life.</p>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 5 &mdash; Attention Circuit Distribution Matrix: an 8x8 grid (layers x heads), each cell colour-coded by dominant circuit type, with Layer 3 highlighted as the transition boundary between a "Local" region (L0-L2) and an "Abstract" region (L4-L7).</span></div>
+  <figcaption>The whole taxonomy laid out as a grid. You can watch the colours shift from "local" blues to "abstract" reds as you scan down the rows.</figcaption>
+</div>
+
+<p>If this sounds like a stretch, hold that thought. This same Layer 3 turning point shows up again, independently, in the hidden-state analysis. Which is the whole point of running two separate investigations on the same suspect.</p>
+
+<h2><span class="num">Chapter 4</span>Meanwhile, in the residual stream</h2>
+
+<p>Attention tells you how information gets <em>routed</em>. It doesn't tell you what happens to the information once it arrives. For that, you need to look at the hidden states themselves, the vectors that carry each token's representation through the network.</p>
+
+<p>I tracked three things about these vectors as they moved through all 8 layers: how big they got (norm), how much they changed at each individual step (delta), and whether they kept pointing in roughly the same direction (cosine similarity). Think of a hidden state as an arrow: norm is how long the arrow is, and cosine similarity between layers tells you whether it's still pointing the same way it used to, or has swung off in a new direction.</p>
+
+<h3>Getting bigger, one layer at a time</h3>
+
+<p>Across the board, hidden-state vectors grow in magnitude as they travel deeper into the network, but not uniformly. The sequence-initial token (the very first character, "R" from "Raskolnikov") consistently carries the largest norm of any tracked token, from the very first layer onward, peaking around Layer 5 before easing off slightly toward the end.</p>
+
+<p>That's not a coincidence either. Remember the First-Token Sink heads from the attention analysis, the ones that keep routing attention back to the first token? This is that same phenomenon showing up in a completely different measurement. Every time a head routes attention back to that first position, it writes a little more information into it. The norm growth is basically a running tally of "how many times has something been deposited here."</p>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 6 &mdash; Line chart: hidden-state norm across all 8 layers for four tracked tokens (the sequence-initial "R", "h", "d", and a space character). The "R" line sits well above the others throughout, peaking near Layer 5.</span></div>
+  <figcaption>The first character basically becomes the model's junk drawer: everything ends up in there eventually.</figcaption>
+</div>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 7 &mdash; Similar line chart, but for structural tokens: the sequence-initial token, three different space characters, and a punctuation mark. Shows punctuation catching up sharply in the final layers.</span></div>
+  <figcaption>Even three different spaces in the same sentence end up with different trajectories, purely because of what surrounds them. Same character, different life story.</figcaption>
+</div>
+
+<h3>Where the heavy lifting happens</h3>
+
+<p>Looking at how much each token's norm changes between one layer and the next tells you where the biggest "updates" are happening. The sequence-initial token does most of its growing early, in the first couple of layers, and is actually the only tracked token to show a <em>negative</em> delta near the end, meaning it starts giving information back out rather than just hoarding it. Punctuation tokens, meanwhile, are late bloomers: their biggest jumps happen right at the end of the network, almost as if they've been patiently waiting their turn.</p>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 8 &mdash; Bar chart of per-layer norm deltas for the same tracked tokens, showing the sequence-initial token's big early bars turning negative near Layer 7, while punctuation bars grow toward the final layers.</span></div>
+  <figcaption>Think of this as a heart-rate monitor for each token: big spikes early for the sink token, a late surge for punctuation.</figcaption>
+</div>
+
+<h3>Same direction, different size</h3>
+
+<p>Here's the part I find genuinely satisfying: even as these vectors keep growing in size, the <em>direction</em> they point in stays remarkably stable across layers. Cosine similarity between consecutive layers stays high almost everywhere, with the one exception being the very last transition, where things swing around a bit more, presumably as the model finalizes its prediction.</p>
+
+<p>Picture pumping up a balloon. It keeps getting bigger, but its shape (its "direction," if a balloon can be said to have one) barely changes until you're right at the very end, when it either pops or you tie it off. That's roughly what's happening to these hidden states: steady growth, stable direction, then a final wobble right before the model commits to an answer.</p>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 9 &mdash; Heatmap of layer-to-layer cosine similarity for every tracked token, mostly deep green (high similarity) with a lighter patch at the final L6&rarr;L7 transition.</span></div>
+  <figcaption>Deep green everywhere means "still pointing the same way." The lighter patch at the bottom right is the model changing its mind right before it has to commit.</figcaption>
+</div>
+
+<h2><span class="num">Chapter 5</span>Putting numbers on the vibes</h2>
+
+<p>Qualitative descriptions like "this head is doing X" are useful, but they're also a little squishy. So I built two simple metrics on top of the attention taxonomy to make the layer-by-layer story measurable instead of just observable.</p>
+
+<h3>Shannon entropy: how many job titles does each layer have?</h3>
+
+<p>For each layer, I calculated the entropy of its dominant circuit types. High entropy means a layer has lots of different dominant behaviours coexisting (a diverse team). Low entropy (all the way down to zero) means every head in that layer has converged on the exact same dominant behaviour (everyone doing the identical job).</p>
+
+<p>Entropy rises early, peaking in Layer 1, then crashes to exactly zero at Layers 3 and 4, meaning every head's <em>dominant</em> role has fully converged on Abstract Routing. It then partially bounces back at Layers 5 and 6 as First-Token Sink heads carve out their own dedicated niche, before collapsing to zero again in the very last layer.</p>
+
+<h3>The Behavioral Complexity Index: how many hats is each head wearing?</h3>
+
+<p>Entropy tells you about diversity <em>across</em> a layer. It says nothing about how many things any single head is doing at once. So I introduced a second measure, the Behavioral Complexity Index (BCI), which averages how many behavioural motifs (one dominant, plus any secondary habits) each head in a layer is juggling simultaneously.</p>
+
+<p>BCI climbs steadily from Layer 0, peaks around Layers 3 to 5, then eases back down toward the final layer. Read alongside the entropy collapse, this paints a specific picture: right around the Layer 3 threshold, heads are settling into a single dominant job while <em>still</em> moonlighting on the side. It's less "instant career change" and more "someone quietly transitioning into a new role while still finishing off their old responsibilities for a few weeks."</p>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 10 &mdash; Three-panel chart: (a) stacked bar chart of dominant circuit composition per layer, (b) line chart of Shannon entropy per layer dropping to zero at L3-L4, (c) line chart of BCI per layer peaking around L3-L5.</span></div>
+  <figcaption>Three different ways of measuring the same organizational shift. They all point at the same layer.</figcaption>
+</div>
+
+<h2><span class="num">Chapter 6</span>Two independent witnesses, same story</h2>
+
+<p>This is the part that actually justifies the whole exercise. Attention analysis and hidden-state analysis are, in principle, looking at completely different things. One watches where information gets routed. The other watches what happens to the representation once it arrives. If they told two unrelated stories, that would be a fine, if slightly boring, result. Instead, they agree on basically everything.</p>
+
+<ul>
+  <li><strong>Same overall shape.</strong> Attention shifts from local to abstract with depth. Hidden states independently become more differentiated, less uniform, and more stable in direction, on the same schedule.</li>
+  <li><strong>Same star witness.</strong> Attention analysis flags First-Token Sink heads emerging gradually and then consolidating. Hidden-state analysis, completely independently, shows the sequence-initial token's norm climbing, peaking, and then redistributing on almost exactly the same timeline.</li>
+  <li><strong>Same specialization story.</strong> Entropy collapse and rising BCI (attention side) line up with increasingly stable, differentiated token trajectories (hidden-state side). Both readings say: the network is committing to specific jobs as it gets deeper.</li>
+</ul>
+
+<p>Two witnesses who've never spoken to each other, describing the same event in the same order, is about as good as circumstantial evidence gets.</p>
+
+<h2><span class="num">Chapter 7</span>So what does it all mean?</h2>
+
+<h3>The threshold is real (probably)</h3>
+
+<p>All three lines of evidence, attention, entropy/BCI, and hidden states, independently point at Layer 3 as a genuine turning point. My best guess at what's happening: earlier layers are mostly busy <em>building</em> representations from raw local structure (which letter follows which, where words start and stop). Around Layer 3, the network shifts into <em>operating on</em> representations that have already become meaningful, refining and recombining rather than constructing from scratch.</p>
+
+<p>If you've ever done any kind of compiling or building pipeline, this should feel familiar: early layers are doing something like lexing, picking out raw tokens before they mean anything. Layer 3 is roughly the shift to parsing, where the network starts actually building structure instead of just spotting it. The later layers behave more like optimization passes, polishing something that's already basically assembled.</p>
+
+<h3>Specialization happens gradually, not overnight</h3>
+
+<p>None of the six circuit types appear fully formed. Abstract Routing starts as a minor side habit before becoming the main event. BOS Sink behaviour goes through an entire life cycle: faint background signal, then dedicated specialist role in Layers 5 and 6, then dispersing again by the final layer. Meanwhile Identity Preservation checks out early and Word Boundary behaviour never gets its own dedicated heads at all, staying a background skill that everyone has a little of, like basic first aid training.</p>
+
+<p>This tracks with something the field already knows about attention heads: each one is running its own little lookup-and-write operation (in the technical framing, a QK circuit decides where to look, an OV circuit decides what to write back). Watching specialization unfold gradually is consistent with heads slowly settling into a more specific version of that lookup-write job as depth increases, rather than being born fully specialized.</p>
+
+<h3>Direction settles before size does</h3>
+
+<p>The hidden-state data shows representational <em>direction</em> stabilizing well before representational <em>size</em> stops changing. One tidy explanation: once a layer's update to a token's vector starts pointing roughly the same way as the vector already does, you get continued growth in magnitude without much change in direction. It's the mathematical equivalent of consistently walking in the same direction you're already facing: you keep covering more ground, but you're not changing your heading.</p>
+
+<h3>The BOS token's whole character arc</h3>
+
+<p>The first token's journey deserves its own paragraph because it's honestly the most compelling character in this entire analysis. It starts as a nobody. By the middle layers, it's become the busiest desk in the office, an information hub everyone keeps routing attention toward, with a growing hidden-state norm to match. By Layer 5 it peaks. Then, in the final two layers, it starts giving information back out, its norm actually shrinking a little as everyone else picks up what it's been holding onto.</p>
+
+<p>The working theory: this position functions like a shared bulletin board. Throughout the middle of computation, various heads pin increasingly global, context-spanning information to it. Near the end, that pinned information gets pulled back down and distributed to wherever it's actually needed for the final prediction. It's less "black box" and more "team standup meeting notes," if the standup meeting were also mildly obsessed with a specific token position for six layers straight.</p>
+
+<h3>The big picture: local to abstract</h3>
+
+<p>Zoom all the way out and you get a coherent hierarchy: the earliest layers build local structure from raw characters, a threshold around Layer 3 marks a shift into abstraction and coordination, and the later layers refine, consolidate, and redistribute what's already been built. Nothing about this was assumed going in. It fell out of three independent measurements agreeing with each other.</p>
+
+<div class="figure">
+  <div class="placeholder"><span>FIGURE 11 &mdash; Vertical flow diagram: "Early Computational Organization" (Layers 0-2) flowing into "Representational Transition" (Layer 3) flowing into "Late Computational Organization" (Layers 4-7), with a residual stream spine running through all three.</span></div>
+  <figcaption>The whole story, compressed into one diagram. If you only screenshot one figure from this page, make it this one.</figcaption>
+</div>
+
+<h2><span class="num">Chapter 8</span>Arguing with myself for a minute</h2>
+
+<p>Good science means trying to break your own conclusions before someone else does, so here's me doing that.</p>
+
+<p><strong>Maybe the entropy collapse isn't about meaning at all.</strong> There's a documented phenomenon called a "compression valley" where hidden-state entropy squeezes down purely due to generic geometric properties of the network, unrelated to any task-specific reorganization, and it's been spotted in totally unrelated transformers. If something similar is happening here, Layer 3 might still be a real discontinuity, just not the "construction to operation" shift I've proposed.</p>
+
+<p><strong>Maybe the "stable direction" story is an illusion caused by a few loud dimensions.</strong> There's a known failure mode where a handful of oversized, mostly content-independent coordinates in a vector can make cosine similarity look artificially high, while the rest of the vector is quietly doing something totally different. If that's happening here, what looks like "the model has settled on a meaning early" could actually be "a few numbers are just staying still while everything interesting keeps moving."</p>
+
+<p><strong>Maybe the BOS token isn't an information hub at all.</strong> It could instead be what's been called a "massive activation," a mostly input-independent structural prop that helps stabilize attention and normalization math, more like scaffolding than storage. Under this reading, the late-stage norm drop isn't the model "distributing accumulated context," it's just the scaffolding being taken down once it's no longer needed.</p>
+
+<p>None of these alternatives make the patterns fake. They just mean the honest next step isn't "propose more explanations," it's "run the experiments that would tell these apart," things like directly ablating the BOS position, or patching activations layer by layer to see what actually breaks.</p>
+
+<h2><span class="num">Chapter 9</span>The fine print</h2>
+
+<p>This entire investigation is observational, not causal. I watched patterns emerge and correlate. I did not go in and surgically remove pieces to prove they're load-bearing. That distinction matters a lot, so let me be specific about what these results can and can't support.</p>
+
+<ul>
+  <li><strong>One model, one checkpoint, one sentence.</strong> Everything here comes from a single trained network at a single point in training, tested on one inspection prompt. I have no idea yet whether a different random seed, a different training run, or a different sentence would reproduce the exact same Layer 3 threshold.</li>
+  <li><strong>The taxonomy is a description, not a law of nature.</strong> Someone else looking at the same 64 attention heads might have drawn the category boundaries slightly differently, which would shift the entropy and BCI numbers even though the underlying model hasn't changed at all. These metrics summarize the taxonomy I built, they're not an independent confirmation of it.</li>
+  <li><strong>Correlation, not proof of causation.</strong> Everything I've proposed (the threshold, the specialization story, the BOS lifecycle, the local-to-abstract hierarchy) is a hypothesis backed by converging observation, not an established mechanism. Confirming any of it properly needs intervention-style methods: activation patching, targeted ablation, that kind of thing.</li>
+</ul>
+
+<p>None of this is a disclaimer to make the findings sound weaker than they are. It's just an honest map of where "here's what I observed" ends and "here's what would need to happen to prove it" begins.</p>
+
+<h2><span class="num">Chapter 10</span>Why bother with a tiny model at all?</h2>
+
+<p>It would be reasonable to ask: why spend all this effort on a 25-million-parameter model when the interesting models everyone actually uses have billions of parameters? Two honest reasons.</p>
+
+<p><strong>Reason one: you can actually see everything.</strong> All 64 heads, all 8 layers, fully inspected, with zero sampling shortcuts. That kind of exhaustive coverage becomes flatly impossible once you're dealing with a frontier-scale model with tens of thousands of attention heads. Small models are the wind tunnel before you build the actual plane. And this approach has already paid off before in the field: a circuit discovered in a smaller GPT-2 model was later shown to transfer, with only minor tweaks, to correctly predict behaviour in a larger version of the same model family. Small-model findings aren't automatically throwaway findings.</p>
+
+<p><strong>Reason two: character-level input keeps things honest.</strong> A common worry with tokenized models is that the tokenizer is secretly doing a lot of the interesting work before the model even starts, pre-chopping words into meaningful chunks. NanoLens never gets that help. It sees raw characters and has to figure out where words start and stop entirely on its own. The fact that a clean six-way taxonomy, a Layer 3 threshold, and a full BOS life cycle all emerged anyway, from a model whose only real input signal is a stream of individual letters, is a genuinely interesting result on its own, independent of everything else in this piece.</p>
+
+<h2><span class="num">Chapter 11</span>Wrapping up</h2>
+
+<p>The question I started with was simple: if you watch a transformer's attention patterns and its internal representations completely independently, do they describe the same computation, or do they just happen to coexist? For this model, on this sentence, the answer looks like a clear "yes, same computation." Attention analysis, its quantitative entropy and complexity summary, and hidden-state analysis all converge on the same story: a threshold around Layer 3, a gradual march toward specialization, a first-token position that behaves like a shared workspace with its own beginning, middle, and end, and an overall shift from local, literal processing toward increasingly abstract, coordinated computation.</p>
+
+<p>None of this should be mistaken for a settled scientific fact about how all transformers work. It's a hypothesis, built from one fully-inspectable model, that now has something concrete for future work (mine or anyone else's) to actually go test with proper causal tools. If it survives that testing, and holds up across different models and scales, this small, fully transparent transformer will have done its job. Not by explaining transformer computation completely, but by pointing at exactly where the next, more rigorous round of explanation should begin.</p>
+
+<div class="aside">
+  <span class="aside-label">If you want to poke at this yourself</span>
+  All the code for these experiments is open source. Details and the repository link are in the full paper, linked in the Publications section of this site.
+</div>
+
+</main>
+
+{% include footer.html %}
+
+</body>
+</html>

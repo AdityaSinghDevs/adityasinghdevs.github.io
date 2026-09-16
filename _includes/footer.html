@@ -1,28 +1,15 @@
-<br/>
-<section id="footer">
-<div class="container-footer">
-  <div class="panel-footer">
-	  <div class="row">
-		<div class="col-sm-4">
-		    <h5>About</h5>	
-            <p>{{ site.affiliation }}</p>
-		</div>
-
-		<div class="col-sm-4">
-		    <h5>Contact</h5>	
-            <p>{{ site.contact }}</p>
-		</div>
-
-		<div class="col-sm-4">
-		    <h5>Coordinates</h5>	
-            <p>{{ site.location }}</p>
-		</div>
-	  </div>
-
-      <center><p>&copy {{ "now" | date: "%Y" }} {{site.title | escape }} </p></center>
-	</div>
+<footer class="site-footer">
+  <div class="site-footer-content">
+    <div class="footer-name">Aditya Pratap Singh</div>
+    <div class="footer-links">
+      <a href="mailto:adityasingh.devs@gmail.com">Email</a>
+      <a href="https://github.com/AdityaSinghDevs" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/aditya-pratap-singh25/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="{{ site.baseurl }}/files/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+    </div>
+    <div class="footer-copyright">&copy {{ "now" | date: "%Y" }} Aditya Pratap Singh</div>
   </div>
-</div>
+</footer>
 
 <script src="{{ "/assets/javascript/bootstrap/bootstrap.bundle.min.js" | relative_url }}"></script>
 <script>

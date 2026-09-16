@@ -22,8 +22,8 @@ permalink: /blogs/
       <h3 class="blog-title">
         {% if entry.external_url %}
         <a href="{{ entry.external_url }}" target="_blank" rel="noopener noreferrer">{{ entry.title }}</a>
-        {% elsif entry.content_file %}
-        <a href="{{ site.baseurl }}/{{ entry.content_file }}">{{ entry.title }}</a>
+        {% elsif entry.html_file %}
+        <a href="{{ site.baseurl }}/blogs/{{ entry.html_file }}">{{ entry.title }}</a>
         {% endif %}
       </h3>
       <p class="blog-description">{{ entry.description }}</p>

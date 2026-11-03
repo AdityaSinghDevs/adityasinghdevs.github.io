@@ -6,6 +6,9 @@
   <title>{% if page.title %}{{ page.title | escape }}{% else %}Aditya Pratap Singh | AI Engineer | LLM Systems & Research{% endif %}</title>
   <meta name="description" content="{% if page.description %}{{ page.description | escape }}{% else %}Research-oriented AI engineering undergraduate focused on LLM systems, RAG, model compression, and production-grade ML pipelines.{% endif %}">
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {% if page.custom_css %}
+  <link rel="stylesheet" href="{{ site.baseurl }}/{{ page.custom_css }}">
+  {% endif %}
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

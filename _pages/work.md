@@ -8,26 +8,7 @@ permalink: /work/
 {::nomarkdown}
 <div class="work-feed">
   {% for entry in site.data.work %}
-  <div class="work-entry">
-    <div class="work-main">
-      <div class="work-left-col">
-        <div class="work-date">{{ entry.date }}</div>
-        <div class="work-tag" style="background-color: {{ entry.tag_color }}; color: #fff; border: none;">{{ entry.tag }}</div>
-      </div>
-      <div class="work-right-col">
-        <div class="work-title">
-          <a href="{{ site.baseurl }}/work/{{ entry.html_file }}">{{ entry.title }}</a>
-        </div>
-        <div class="work-authors">{{ entry.authors }}</div>
-        <p class="work-description">{{ entry.description }}</p>
-      </div>
-    </div>
-    <div class="work-thumbnail-wrapper">
-      {% if entry.thumbnail %}
-      <img src="{{ '/images/' | append: entry.thumbnail | relative_url }}" alt="{{ entry.title }}" class="work-thumbnail">
-      {% endif %}
-    </div>
-  </div>
+  {% include content-card.html entry=entry %}
   {% endfor %}
 </div>
 {:/nomarkdown}
@@ -48,7 +29,7 @@ permalink: /work/
   padding: 40px 20px;
 }
 
-.work-entry {
+.content-card {
   display: flex;
   align-items: center;
   gap: 40px;
@@ -56,70 +37,18 @@ permalink: /work/
   border-bottom: 1px solid #d0d0d0;
 }
 
-.work-entry:last-child {
+.content-card:last-child {
   border-bottom: none;
 }
 
-.work-main {
+.content-card-body {
   flex: 0 0 58%;
-  display: flex;
-  gap: 20px;
-}
-
-.work-left-col {
-  flex: 0 0 140px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 8px;
 }
 
-.work-right-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.work-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 6px;
-}
-
-.work-title a {
-  color: #000;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.work-title a:hover {
-  color: #495057;
-}
-
-.work-thumbnail-wrapper {
-  flex: 0 0 42%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.work-thumbnail {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  max-height: 350px;
-  width: auto;
-  transform: scale(1.1);
-}
-
-.work-date {
-  font-size: 1rem;
-  color: #6c757d;
-  font-family: 'Alegreya', Georgia, 'Times New Roman', serif;
-}
-
-.work-tag {
+.content-card-tag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -133,34 +62,33 @@ permalink: /work/
   text-align: center;
   line-height: 1.3;
   min-height: 28px;
+  width: fit-content;
 }
 
-.work-tag-filled {
-  background-color: #2c3e50;
-  color: #fff;
-  border: none;
+.content-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 6px;
 }
 
-.work-tag-orange {
-  background-color: #b5560c;
-  color: #fff;
-  border: none;
+.content-card-title a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.work-tag-outline {
-  background-color: transparent;
-  color: #2c3e50;
-  border: 1px solid #2c3e50;
+.content-card-title a:hover {
+  color: #495057;
 }
 
-.work-authors {
-  font-size: 0.85rem;
+.content-card-date {
+  font-size: 1rem;
   color: #6c757d;
-  margin-bottom: 12px;
   font-family: 'Alegreya', Georgia, 'Times New Roman', serif;
 }
 
-.work-description {
+.content-card-description {
   font-size: 1.15rem;
   line-height: 1.6;
   color: #495057;
@@ -168,25 +96,35 @@ permalink: /work/
   font-family: 'Alegreya', Georgia, 'Times New Roman', serif;
 }
 
+.content-card-image {
+  flex: 0 0 42%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-card-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 350px;
+  width: auto;
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
-  .work-entry {
+  .content-card {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
   }
   
-  .work-main {
-    flex-direction: column;
-    gap: 15px;
+  .content-card-body {
+    flex: 1;
+    width: 100%;
   }
   
-  .work-left-col {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .work-thumbnail-wrapper {
+  .content-card-image {
     flex: 1;
     width: 100%;
   }

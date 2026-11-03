@@ -1,20 +1,34 @@
+# Canonical schema for all content entries:
+# - title: "..."
+# - date: 2026-09-18          # real YAML date, not a string
+# - tag: "..."
+# - tag_color: "..."
+# - image: "path/to/image"     # single name, replaces thumbnail/photo
+# - description: "one line teaser"
+# - author: "Aditya Pratap Singh"
+# - subtitle: "..."            # OPTIONAL, italic line beneath title
+# - context_note: "..."        # OPTIONAL, pill-style note beneath author
+# - accent_color: "..."       # OPTIONAL, text color for context pill
+# - accent_soft: "..."         # OPTIONAL, background color for context pill
+# - external_url: "https://..."   # use this OR content_file, never both, never neither
+# - content_file: "path/to/file.md"
+# - custom_css: "path/to/file.css"   # OPTIONAL, only if an entry needs styling beyond the shared card/detail design
+
 - title: "Proteus: Can a Model Hide That It Knows It's Being Tested?"
-  date: "September 2026"
+  date: 2026-09-01
   tag: "INDEPENDENT RESEARCH"
   tag_color: "#0e6b5c"
-  authors: "Aditya Pratap Singh"
+  author: "Aditya Pratap Singh"
   description: "A 20-hour mechanistic interpretability investigation into whether a model can stop saying it is being evaluated while still internally representing it. Activation steering and probing revealed a surprising failure mode: what looked like a surviving belief was instead a steering-induced bias."
-  thumbnail: "work/proteus.png"
-  slug: "proteus"
-  html_file: "proteus.html"
+  image: "work/proteus.png"
+  content_file: "_work/proteus.md"
 
 - title: "At the Threshold: Tracing Computational Hierarchy through Convergent Evidence in a Small Transformer"
-  date: "August 2026"
+  date: 2026-08-01
   tag: "PREPRINT"
   tag_color: "#b5560c"
-  authors: "Aditya Pratap Singh"
+  author: "Aditya Pratap Singh Rajawat"
   description: "A 25-million-parameter transformer, fully exposed, reveals a computational threshold where local pattern-matching turns into something more abstract"
-  thumbnail: "work/at-the-threshold.svg"
-  slug: "at-the-threshold"
-  html_file: "at-the-threshold.html"
+  image: "work/at-the-threshold.svg"
+  content_file: "_work/at-the-threshold.md"
 

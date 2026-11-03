@@ -1,3 +1,15 @@
+# Canonical schema for all content entries:
+# - title: "..."
+# - date: 2026-09-18          # real YAML date, not a string
+# - tag: "..."
+# - tag_color: "..."
+# - image: "path/to/image"     # single name, replaces thumbnail/photo
+# - description: "one line teaser"
+# - author: "Aditya Pratap Singh"
+# - external_url: "https://..."   # use this OR content_file, never both, never neither
+# - content_file: "path/to/file.md"
+# - custom_css: "path/to/file.css"   # OPTIONAL, only if an entry needs styling beyond the shared card/detail design
+
 - title: "Treating ML Inference as a System, Not a Function Call"
   date: "2025"
   tag: "TOWARDS AI"
@@ -7,8 +19,9 @@
   external_url: "https://pub.towardsai.net/treating-ml-inference-as-a-system-not-a-function-call-0935e9781931"
 
 - title: "Notes on Transformer Attention Patterns"
-  date: "September 2026"
+  date: 2026-09-01
   tag: "NOTES"
   tag_color: "#3498db"
   description: "Exploring how attention heads specialize and what that tells us about model behavior."
-  html_file: "transformer-attention-patterns.html"
+  author: "Aditya Pratap Singh"
+  content_file: "blogs/transformer-attention-patterns.md"

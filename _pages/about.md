@@ -26,7 +26,7 @@ Currently Deputy Vice President of Advait (AI Society, VIPS-TC) where I host eve
 - 📧 [Email](mailto:adityasingh.devs@gmail.com)
 - 💻 [GitHub](https://github.com/AdityaSinghDevs)
 - 🔗 [LinkedIn](https://www.linkedin.com/in/aditya-pratap-singh25/)
-- 📄 [Download Resume](/assets/Aditya_Enhanced_Resume_20-07-25.pdf)
+- 📄 [Download Resume](/files/resume.pdf)
 
 ---
 

@@ -98,4 +98,4 @@ exclude:
   - Rakefile
 
 # Social image
-image: /assets/img/social_preview.jpg
+image: /social_preview.jpg

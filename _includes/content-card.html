@@ -1,0 +1,36 @@
+{% assign entry = include.entry %}
+
+<div class="content-card">
+  {% if entry.image %}
+  <div class="content-card-image">
+    <img src="{{ site.baseurl }}/images/{{ entry.image }}" alt="{{ entry.title }}">
+  </div>
+  {% endif %}
+
+  <div class="content-card-body">
+    {% if entry.tag %}
+    <span class="content-card-tag" style="background-color: {{ entry.tag_color }}; color: white;">
+      {{ entry.tag }}
+    </span>
+    {% endif %}
+
+    <h3 class="content-card-title">
+      {% if entry.external_url %}
+      <a href="{{ entry.external_url }}" target="_blank" rel="noopener noreferrer">{{ entry.title }}</a>
+      {% elsif entry.content_file %}
+      {% assign content_filename = entry.content_file | replace: '_work/', '' | replace: '.md', '.html' %}
+      <a href="{{ site.baseurl }}/work/{{ content_filename }}">{{ entry.title }}</a>
+      {% else %}
+      {{ entry.title }}
+      {% endif %}
+    </h3>
+
+    {% if entry.date %}
+    <div class="content-card-date">{{ entry.date }}</div>
+    {% endif %}
+
+    {% if entry.description %}
+    <p class="content-card-description">{{ entry.description }}</p>
+    {% endif %}
+  </div>
+</div>

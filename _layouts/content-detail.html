@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<article class="content-detail">
+  <header class="content-detail-header">
+    <div class="content-detail-hero">
+      {% if page.tag %}
+      <span class="content-detail-tag" style="background-color: {{ page.tag_color }}; color: #ffffff;">
+        {{ page.tag }}
+      </span>
+      {% endif %}
+
+      <h1 class="content-detail-title">{{ page.title }}</h1>
+
+      {% if page.subtitle %}
+      <p class="content-detail-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+
+      {% if page.author %}
+      <div class="content-detail-author">{{ page.author }}</div>
+      {% endif %}
+
+      {% if page.context_note %}
+      <div class="content-detail-context-note" style="background-color: {{ page.accent_soft }}; color: {{ page.accent_color }};">{{ page.context_note }}</div>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="content-detail-body">
+    {{ content }}
+  </div>
+</article>

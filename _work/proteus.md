@@ -147,7 +147,7 @@ permalink: /work/proteus.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 1 &mdash; Bar chart: classification accuracy per domain, comparing eval-framed and deploy-framed prompts, for Refusal, Capability, and Opinion. Refusal and Capability show strong accuracy (0.7-1.0), Opinion sits near 0.2.</span></div>
+  <img src="{{ site.baseurl }}/images/work/proteus/figure-1.png" alt="FIGURE 1 — Bar chart: classification accuracy per domain, comparing eval-framed and deploy-framed prompts, for Refusal, Capability, and Opinion.">
   <figcaption>Refusal (7/10) and Capability (9/10) tracked the framing correctly. Opinion (2/10) basically didn't.</figcaption>
 </div>
 {:/nomarkdown}
@@ -192,7 +192,7 @@ permalink: /work/proteus.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 2 &mdash; Bar chart: held-out items self-reporting "evaluation" out of 6, across baseline, real vector at +1.5 and -1.5, real vector at +4.0 and -4.0, and placebo at all four settings. Only "real +1.5" drops noticeably, from 5 to 3.</span></div>
+  <img src="{{ site.baseurl }}/images/work/proteus/figure-2.png" alt="FIGURE 2 — Bar chart: held-out items self-reporting 'evaluation' out of 6, across baseline, real vector at +1.5 and -1.5, real vector at +4.0 and -4.0, and placebo at all four settings.">
   <figcaption>Only one condition actually moved: the real vector, at positive alpha, moderate strength.</figcaption>
 </div>
 {:/nomarkdown}
@@ -207,7 +207,7 @@ permalink: /work/proteus.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 3 &mdash; Violin plot comparing task response length (in words) between real vector at +1.5 (labeled "formal, structured") and real vector at -1.5 (labeled "casual, pedagogical"), showing a visible shift in distribution shape and spread.</span></div>
+  <img src="{{ site.baseurl }}/images/work/proteus/figure-3.png" alt="FIGURE 3 — Violin plot comparing task response length (in words) between real vector at +1.5 and real vector at -1.5.">
   <figcaption>Same magnitude, opposite sign, noticeably different writing style. Interesting side effect I wasn't even looking for.</figcaption>
 </div>
 {:/nomarkdown}
@@ -243,7 +243,7 @@ permalink: /work/proteus.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 4 &mdash; Scatter plot: mass-mean score (signed distance from class midpoint) across four conditions: placebo eval-framed (positive cluster), placebo deploy-framed (negative cluster, correctly tracking true framing), real vector eval-framed (strongly positive), and real vector deploy-framed (also positive, matching the eval cluster instead of separating).</span></div>
+  <img src="{{ site.baseurl }}/images/work/proteus/figure-4.png" alt="FIGURE 4 — Scatter plot: mass-mean score (signed distance from class midpoint) across four conditions.">
   <figcaption>Placebo correctly tells eval from deploy apart. The real vector doesn't, it calls everything "evaluation."</figcaption>
 </div>
 {:/nomarkdown}
@@ -264,7 +264,7 @@ permalink: /work/proteus.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 5 &mdash; Histogram overlaying component value distributions for the real vector and placebo vector, showing the real vector has a visibly longer tail with a handful of outlier dimensions the placebo lacks.</span></div>
+  <img src="{{ site.baseurl }}/images/work/proteus/figure-5.png" alt="FIGURE 5 — Histogram overlaying component value distributions for the real vector and placebo vector.">
   <figcaption>The real vector has a longer, spikier tail. Those spikes turned out to matter.</figcaption>
 </div>
 {:/nomarkdown}
@@ -275,7 +275,7 @@ permalink: /work/proteus.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 6 &mdash; Two side-by-side bar charts: (left) per-item deploy-framed bias scores comparing original vector vs. top-20-dimensions-zeroed vector; (right) the trimmed-to-original ratio per item, showing three items dropping to 0.53-0.72 and three barely moving at 0.86-0.88, with a mean line at 0.76.</span></div>
+  <img src="{{ site.baseurl }}/images/work/proteus/figure-6.png" alt="FIGURE 6 — Two side-by-side bar charts: per-item deploy-framed bias scores comparing original vector vs. top-20-dimensions-zeroed vector.">
   <figcaption>The outlier dimensions carry a real, disproportionate share of the bias, just not the whole thing.</figcaption>
 </div>
 {:/nomarkdown}

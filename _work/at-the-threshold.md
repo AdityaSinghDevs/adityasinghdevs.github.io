@@ -43,7 +43,7 @@ permalink: /work/at-the-threshold.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 1 &mdash; Overview diagram: one forward pass splitting into two independent tracks (attention routing and hidden-state representations), which converge into "cross-method corroboration" and a set of mechanistic hypotheses.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-1.png" alt="FIGURE 1 — Overview diagram: one forward pass splitting into two independent tracks.">
   <figcaption>The whole workflow in one picture. Two witnesses, one crime scene.</figcaption>
 </div>
 {:/nomarkdown}
@@ -82,7 +82,7 @@ permalink: /work/at-the-threshold.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 2 &mdash; Data acquisition workflow: the inspection prompt flowing through all 8 transformer layers, with attention matrices being pulled from every head on one side, and hidden states being pushed out via forward hooks on the other.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-2.png" alt="FIGURE 2 — Data acquisition workflow: the inspection prompt flowing through all 8 transformer layers.">
   <figcaption>One forward pass, two completely independent measurement streams. Like wiring a heart monitor and a brain scanner to the same patient at the same time.</figcaption>
 </div>
 {:/nomarkdown}
@@ -123,15 +123,18 @@ permalink: /work/at-the-threshold.html
 {:/nomarkdown}
 
 {::nomarkdown}
+<div class="figure-row">
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-3.png" alt="FIGURE 3 — Two heatmaps of "previous-token" style attention heads (Layer 1 and Layer 2).">
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-3.2.png" alt="FIGURE 3.2 — Additional heatmap of previous-token attention head.">
+</div>
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 3 &mdash; Two heatmaps of "previous-token" style attention heads (Layer 1 and Layer 2), both showing a strong diagonal band with a slight widening to two or three positions back.</span></div>
   <figcaption>The diagonal line is the tell: attention concentrated almost entirely on the token right behind, plus a little wiggle room.</figcaption>
 </div>
 {:/nomarkdown}
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 4 &mdash; Grid of six heatmaps, one representative example per circuit class: previous-token, identity-preservation, word-boundary, first-token sink, punctuation-separator, abstract-routing.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-4.png" alt="FIGURE 4 — Grid of six heatmaps, one representative example per circuit class.">
   <figcaption>The full cast of characters, side by side. Rows are "who's looking," columns are "who they're looking at," and darker means "looking harder."</figcaption>
 </div>
 {:/nomarkdown}
@@ -150,7 +153,7 @@ permalink: /work/at-the-threshold.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 5 &mdash; Attention Circuit Distribution Matrix: an 8x8 grid (layers x heads), each cell colour-coded by dominant circuit type, with Layer 3 highlighted as the transition boundary between a "Local" region (L0-L2) and an "Abstract" region (L4-L7).</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-5.png" alt="FIGURE 5 — Attention Circuit Distribution Matrix: an 8x8 grid (layers x heads).">
   <figcaption>The whole taxonomy laid out as a grid. You can watch the colours shift from "local" blues to "abstract" reds as you scan down the rows.</figcaption>
 </div>
 {:/nomarkdown}
@@ -171,14 +174,14 @@ permalink: /work/at-the-threshold.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 6 &mdash; Line chart: hidden-state norm across all 8 layers for four tracked tokens (the sequence-initial "R", "h", "d", and a space character). The "R" line sits well above the others throughout, peaking near Layer 5.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-6.png" alt="FIGURE 6 — Line chart: hidden-state norm across all 8 layers for four tracked tokens.">
   <figcaption>The first character basically becomes the model's junk drawer: everything ends up in there eventually.</figcaption>
 </div>
 {:/nomarkdown}
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 7 &mdash; Similar line chart, but for structural tokens: the sequence-initial token, three different space characters, and a punctuation mark. Shows punctuation catching up sharply in the final layers.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-7.png" alt="FIGURE 7 — Similar line chart, but for structural tokens.">
   <figcaption>Even three different spaces in the same sentence end up with different trajectories, purely because of what surrounds them. Same character, different life story.</figcaption>
 </div>
 {:/nomarkdown}
@@ -189,7 +192,7 @@ permalink: /work/at-the-threshold.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 8 &mdash; Bar chart of per-layer norm deltas for the same tracked tokens, showing the sequence-initial token's big early bars turning negative near Layer 7, while punctuation bars grow toward the final layers.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-8.png" alt="FIGURE 8 — Bar chart of per-layer norm deltas for the same tracked tokens.">
   <figcaption>Think of this as a heart-rate monitor for each token: big spikes early for the sink token, a late surge for punctuation.</figcaption>
 </div>
 {:/nomarkdown}
@@ -202,7 +205,7 @@ permalink: /work/at-the-threshold.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 9 &mdash; Heatmap of layer-to-layer cosine similarity for every tracked token, mostly deep green (high similarity) with a lighter patch at the final L6&rarr;L7 transition.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-9.png" alt="FIGURE 9 — Heatmap of layer-to-layer cosine similarity for every tracked token.">
   <figcaption>Deep green everywhere means "still pointing the same way." The lighter patch at the bottom right is the model changing its mind right before it has to commit.</figcaption>
 </div>
 {:/nomarkdown}
@@ -225,7 +228,7 @@ permalink: /work/at-the-threshold.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 10 &mdash; Three-panel chart: (a) stacked bar chart of dominant circuit composition per layer, (b) line chart of Shannon entropy per layer dropping to zero at L3-L4, (c) line chart of BCI per layer peaking around L3-L5.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-10.png" alt="FIGURE 10 — Three-panel chart: stacked bar chart, Shannon entropy, and BCI per layer.">
   <figcaption>Three different ways of measuring the same organizational shift. They all point at the same layer.</figcaption>
 </div>
 {:/nomarkdown}
@@ -272,7 +275,7 @@ permalink: /work/at-the-threshold.html
 
 {::nomarkdown}
 <div class="figure">
-  <div class="placeholder"><span>FIGURE 11 &mdash; Vertical flow diagram: "Early Computational Organization" (Layers 0-2) flowing into "Representational Transition" (Layer 3) flowing into "Late Computational Organization" (Layers 4-7), with a residual stream spine running through all three.</span></div>
+  <img src="{{ site.baseurl }}/images/work/at-the-threshold/figure-11.png" alt="FIGURE 11 — Vertical flow diagram: Early Computational Organization flowing into Representational Transition flowing into Late Computational Organization.">
   <figcaption>The whole story, compressed into one diagram. If you only screenshot one figure from this page, make it this one.</figcaption>
 </div>
 {:/nomarkdown}

@@ -28,13 +28,13 @@ contact: >
 
 # Pages shown in navbar
 nav_pages:
-  - name: about
+  # - name: about
   - name: projects     # Add this one!
   - name: blogs
   - name: publications
   - name: work
-  - name: talks
-  - name: research
+  # - name: talks
+  # - name: research
   - name: resume       # Add if you want a dedicated resume page
 
 
